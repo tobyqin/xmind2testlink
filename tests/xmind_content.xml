@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xmap-content xmlns="urn:xmind:xmap:xmlns:content:2.0" xmlns:fo="http://www.w3.org/1999/XSL/Format"
+              xmlns:svg="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+              xmlns:xlink="http://www.w3.org/1999/xlink" modified-by="Toby Qin" timestamp="1488358647516" version="2.0">
+    <sheet id="6gjrjp34c9j95bjlhc7te9ve4t" modified-by="Toby Qin" theme="350vdffprrrgdlc687noqchlr9"
+           timestamp="1488358647516">
+        <topic id="0vdp7n6oc8fd03dpt6k3lbdlpb" modified-by="Toby Qin" structure-class="org.xmind.ui.logic.right"
+               timestamp="1488358617107">
+            <title svg:width="500">test case by xmind</title>
+            <children>
+                <topics type="attached">
+                    <topic id="3g4phvuft77mek03bc6ou3jmeh" modified-by="Toby Qin" timestamp="1488358613412">
+                        <title>demo suite</title>
+                        <children>
+                            <topics type="attached">
+                                <topic id="6utjnqagpc7cg6p85gk3i2qjhb" modified-by="Toby Qin" timestamp="1488358538264">
+                                    <title>test case 1</title>
+                                    <children>
+                                        <topics type="attached">
+                                            <topic id="2t8lod6ibp7b5cruhn5mle90vi" modified-by="Toby Qin"
+                                                   timestamp="1488358461941">
+                                                <title>step 1</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="1u2224hviorkb0visrh31lrckk" modified-by="Toby Qin"
+                                                               timestamp="1488358466484">
+                                                            <title>expected 1</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                            <topic id="7kgbqqd0757nla3t88mul944fq" modified-by="Toby Qin"
+                                                   timestamp="1488358469850">
+                                                <title>step 2</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="4i3k2d0k0hvpmgchb7pfn7rv1v" modified-by="Toby Qin"
+                                                               timestamp="1488358474563">
+                                                            <title>expected 2</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                        </topics>
+                                    </children>
+                                    <notes>
+                                        <html>
+                                            <xhtml:p>summary</xhtml:p>
+                                            <xhtml:p/>
+                                        </html>
+                                        <plain>summary&#13;
+                                        </plain>
+                                    </notes>
+                                    <marker-refs>
+                                        <marker-ref marker-id="priority-1"/>
+                                    </marker-refs>
+                                </topic>
+                                <topic id="62sq7rg0sm4p9h0plcpqvvi652" modified-by="Toby Qin" timestamp="1488358539999">
+                                    <title>test case 2</title>
+                                    <children>
+                                        <topics type="attached">
+                                            <topic id="2iij3jf6l6qafsvqt0qvd1d0b7" modified-by="Toby Qin"
+                                                   timestamp="1488358479237">
+                                                <title>step 1</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="64gnfaakkmcj871j6mvqq5p0hf" modified-by="Toby Qin"
+                                                               timestamp="1488358479237">
+                                                            <title>expected 1</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                            <topic id="5p0mlqco5tmi3ul1702dvop219" modified-by="Toby Qin"
+                                                   timestamp="1488358479239">
+                                                <title>step 2</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="2mh59gta6vnb3uju4i85k60rt9" modified-by="Toby Qin"
+                                                               timestamp="1488358479239">
+                                                            <title>expected 2</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                        </topics>
+                                    </children>
+                                    <notes>
+                                        <html>
+                                            <xhtml:p>summary</xhtml:p>
+                                            <xhtml:p/>
+                                        </html>
+                                        <plain>summary&#13;
+                                        </plain>
+                                    </notes>
+                                    <marker-refs>
+                                        <marker-ref marker-id="priority-1"/>
+                                    </marker-refs>
+                                </topic>
+                                <topic id="6s6fq9o40fjr95r192sv71p1r6" modified-by="Toby Qin" timestamp="1488358569857">
+                                    <title>test case 3</title>
+                                    <children>
+                                        <topics type="attached">
+                                            <topic id="1tg3l4gj56s9n5p6l54r8p9nht" modified-by="Toby Qin"
+                                                   timestamp="1488358488665">
+                                                <title>step 1</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="3c6ahubuugstboheai7i4thg7n" modified-by="Toby Qin"
+                                                               timestamp="1488358488664">
+                                                            <title>expected 1</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                            <topic id="0lqfd6b2pdrclf2a70nhcbhudl" modified-by="Toby Qin"
+                                                   timestamp="1488358488665">
+                                                <title>step 2</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="1g6n44dtknj9c0762bincahnco" modified-by="Toby Qin"
+                                                               timestamp="1488358488665">
+                                                            <title>expected 2</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                            <topic id="40ak9oc7vnfdhsdbg8063bhm4u" modified-by="Toby Qin"
+                                                   timestamp="1488358571654">
+                                                <title>step 3</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="06fhd7iqbaea9nrg41n29m0alf" modified-by="Toby Qin"
+                                                               timestamp="1488358574033">
+                                                            <title>expected 3</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                        </topics>
+                                    </children>
+                                    <marker-refs>
+                                        <marker-ref marker-id="priority-2"/>
+                                    </marker-refs>
+                                    <notes>
+                                        <html>
+                                            <xhtml:p>summary</xhtml:p>
+                                        </html>
+                                        <plain>summary</plain>
+                                    </notes>
+                                </topic>
+                            </topics>
+                        </children>
+                    </topic>
+                    <topic id="5t69j48tjorm60fq4og9l82t06" modified-by="Toby Qin" timestamp="1488358617057">
+                        <title>apple suite</title>
+                        <notes>
+                            <plain>this will be a detail or summary note&#13;
+                            </plain>
+                            <html>
+                                <xhtml:p>this will be a detail or summary note</xhtml:p>
+                                <xhtml:p/>
+                            </html>
+                        </notes>
+                        <children>
+                            <topics type="attached">
+                                <topic id="3pvdpdjt772s1tkljj40qdi6fe" modified-by="Toby Qin" timestamp="1488353252857">
+                                    <title>test case title for apple 1</title>
+                                    <children>
+                                        <topics type="attached">
+                                            <topic id="2j4fp698uepuetr7607f05rvlv" modified-by="Toby Qin"
+                                                   timestamp="1488353155384">
+                                                <title>step1 action</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="4h46575sot2m6gks8106322m0c" modified-by="Toby Qin"
+                                                               timestamp="1488353158277">
+                                                            <title>step1 expected</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                            <topic id="3he77h2p1u98ob1lr76v1kqnlb" modified-by="Toby Qin"
+                                                   timestamp="1488353160056">
+                                                <title>step2 action</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="6f1r004nvjkboi47hahopajmq0" modified-by="Toby Qin"
+                                                               timestamp="1488353166587">
+                                                            <title>step2 expected</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                            <topic id="7adj3frhcqet8or4qt6m9f7vg4" modified-by="Toby Qin"
+                                                   timestamp="1488353173516">
+                                                <title>step3 action</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="4v7l7ru45mucgkmhddndgorj6d" modified-by="Toby Qin"
+                                                               timestamp="1488353178700">
+                                                            <title>step3 expected</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                        </topics>
+                                    </children>
+                                    <marker-refs>
+                                        <marker-ref marker-id="priority-1"/>
+                                    </marker-refs>
+                                    <notes>
+                                        <html>
+                                            <xhtml:p>note will be summary field for this test case</xhtml:p>
+                                        </html>
+                                        <plain>note will be summary field for this test case</plain>
+                                    </notes>
+                                </topic>
+                                <topic id="3vr7rnckgtsf5v9l5qtfseh6q1" modified-by="Toby Qin" timestamp="1488353300218">
+                                    <title>test case title for apple 2</title>
+                                    <marker-refs>
+                                        <marker-ref marker-id="priority-2"/>
+                                    </marker-refs>
+                                    <notes>
+                                        <html>
+                                            <xhtml:p>summary of test case</xhtml:p>
+                                        </html>
+                                        <plain>summary of test case</plain>
+                                    </notes>
+                                </topic>
+                                <topic id="74ctsasrvp2526l3882g5r0gsr" modified-by="Toby Qin" timestamp="1488353324682">
+                                    <title>! this will be ignore</title>
+                                    <children>
+                                        <topics type="attached">
+                                            <topic id="6l0nols149ds7jgkhekd0j9s7i" modified-by="Toby Qin"
+                                                   timestamp="1488353324388">
+                                                <title>no matter what you say here</title>
+                                            </topic>
+                                            <topic id="64onl3q9ajmhkn6d0pdik7iijo" modified-by="Toby Qin"
+                                                   timestamp="1488353329256">
+                                                <title>will be ignore as well</title>
+                                            </topic>
+                                        </topics>
+                                    </children>
+                                </topic>
+                            </topics>
+                        </children>
+                    </topic>
+                    <topic id="2vhal8pga02dv1d47hp4ufhuc6" modified-by="Toby Qin" timestamp="1488353096442">
+                        <title>banana suite</title>
+                        <children>
+                            <topics type="attached">
+                                <topic id="63ffaaj8dp7j0711dpu1e2of9a" modified-by="Toby Qin" timestamp="1488358354829">
+                                    <title>my test case 1</title>
+                                    <marker-refs>
+                                        <marker-ref marker-id="priority-3"/>
+                                    </marker-refs>
+                                    <children>
+                                        <topics type="attached">
+                                            <topic id="6tjmi45cj0dcfnanvplp6ug1u3" modified-by="Toby Qin"
+                                                   timestamp="1488353368666">
+                                                <title>step 1 action without expected</title>
+                                            </topic>
+                                            <topic id="17gqmnu1ef36at0io6flga9h4c" modified-by="Toby Qin"
+                                                   timestamp="1488353379263">
+                                                <title>step 2 action</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="2n6j5nr6fi1n57i5ocsbvpm8uo" modified-by="Toby Qin"
+                                                               timestamp="1488353385085">
+                                                            <title>step2 expected</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                            <topic id="6v950huhi7nup4subu5ielqe7k" modified-by="Toby Qin"
+                                                   timestamp="1488358359585">
+                                                <title>step 3 action</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="59q3183dfdam397qr47aur57j4" modified-by="Toby Qin"
+                                                               timestamp="1488358364302">
+                                                            <title>step 3 expected</title>
+                                                            <children>
+                                                                <topics type="attached">
+                                                                    <topic id="4b2j7s1ne8d6etl36624sjsv8m"
+                                                                           modified-by="Toby Qin"
+                                                                           timestamp="1488358372296">
+                                                                        <title>here will be ignore</title>
+                                                                    </topic>
+                                                                </topics>
+                                                            </children>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                        </topics>
+                                    </children>
+                                </topic>
+                                <topic id="0cnf79fbqgddilvacihoqjst2o" modified-by="Toby Qin" timestamp="1488353206765">
+                                    <title>my test case 2</title>
+                                    <marker-refs>
+                                        <marker-ref marker-id="priority-1"/>
+                                    </marker-refs>
+                                </topic>
+                            </topics>
+                        </children>
+                    </topic>
+                    <topic id="7projiv4ce3nniuodu4k4bdibe" modified-by="Toby Qin" timestamp="1488353483522">
+                        <title>orange suite</title>
+                        <children>
+                            <topics type="attached">
+                                <topic id="3m1r3vpe13p6nsi49dc300ibhl" modified-by="Toby Qin" timestamp="1488353428396">
+                                    <title>my test case 1</title>
+                                    <children>
+                                        <topics type="attached">
+                                            <topic id="45vukc1ao2bbsplskb31nlbkrf" modified-by="Toby Qin"
+                                                   timestamp="1488353440223">
+                                                <title>without priority for this test</title>
+                                            </topic>
+                                        </topics>
+                                    </children>
+                                </topic>
+                                <topic id="5knpak2kphrm5cs19p9r66o64j" modified-by="Toby Qin" timestamp="1488353465757">
+                                    <title>my test case 2</title>
+                                    <children>
+                                        <topics type="attached">
+                                            <topic id="4l8dpq420jqpdv7oq5l2eghd8h" modified-by="Toby Qin"
+                                                   timestamp="1488353460517">
+                                                <title>!ignore this step</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="0itnuu82fqr4mrnodft3f9o9p3" modified-by="Toby Qin"
+                                                               timestamp="1488353464615">
+                                                            <title>and its result</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                            <topic id="7nb31v41co42k6gma1ois6332c" modified-by="Toby Qin"
+                                                   timestamp="1488353474439">
+                                                <title>start from this step</title>
+                                                <children>
+                                                    <topics type="attached">
+                                                        <topic id="3i4bqgme9vnq9cako62o8g03bi" modified-by="Toby Qin"
+                                                               timestamp="1488353480223">
+                                                            <title>expected something</title>
+                                                        </topic>
+                                                    </topics>
+                                                </children>
+                                            </topic>
+                                        </topics>
+                                    </children>
+                                </topic>
+                                <topic id="04dflao8t5vf9a6236ubb4723q" modified-by="Toby Qin" timestamp="1488353500345">
+                                    <title>test 3 without steps</title>
+                                </topic>
+                            </topics>
+                        </children>
+                    </topic>
+                    <topic id="6is3gsu9ec40tc5teo0l7km9pq" modified-by="Toby Qin" timestamp="1488353061524">
+                        <title>! ignore me</title>
+                        <children>
+                            <topics type="attached">
+                                <topic id="3qq208t4ml451vlnfk67q5eboc" modified-by="Toby Qin" timestamp="1488352971141">
+                                    <title>everything here will be ignore</title>
+                                </topic>
+                            </topics>
+                        </children>
+                    </topic>
+                </topics>
+                <topics type="detached">
+                    <topic branch="folded" id="7ruchnrqknrp40reg58bujgq6b" modified-by="Toby Qin"
+                           timestamp="1488358647516">
+                        <title>free topic / note</title>
+                        <position svg:x="60" svg:y="405"/>
+                        <children>
+                            <topics type="attached">
+                                <topic id="2elf4ut6nudouda99s2ed4t2dh" modified-by="Toby Qin" timestamp="1488352971141">
+                                    <title>you can add free topic or note</title>
+                                </topic>
+                                <topic id="0gr2vrm56j7iaa0iddm5jhsolf" modified-by="Toby Qin" timestamp="1488352971142">
+                                    <title svg:width="500">but they will be ignore during import</title>
+                                </topic>
+                                <topic id="3lhi305bbikvr46952ffndb6ik" modified-by="Toby Qin" timestamp="1488352971142">
+                                    <title svg:width="500">but recommend use another sheet to do so</title>
+                                </topic>
+                            </topics>
+                        </children>
+                    </topic>
+                </topics>
+            </children>
+        </topic>
+        <title>Sheet 1</title>
+    </sheet>
+    <sheet id="3s6mt97hruia77bom8tlnv36re" modified-by="Toby Qin" theme="34mgsmucnbdif5jlqji3h0l0qi"
+           timestamp="1488352971145">
+        <topic id="0gv7ttonscuolkr5j4rf0qjfi7" modified-by="Toby Qin" structure-class="org.xmind.ui.map.unbalanced"
+               timestamp="1488352971145">
+            <title>another topic</title>
+            <children>
+                <topics type="attached">
+                    <topic id="7p6jdnne1pbvh3fes7rhocka5d" modified-by="Toby Qin" timestamp="1488352971144">
+                        <title>what</title>
+                    </topic>
+                    <topic id="4l45ccvle8fpbgl76r79214ev0" modified-by="Toby Qin" timestamp="1488352971144">
+                        <title>when</title>
+                    </topic>
+                    <topic id="1f71m594rie7ed4hnrh7mtu9nq" modified-by="Toby Qin" timestamp="1488352971144">
+                        <title>why</title>
+                    </topic>
+                </topics>
+                <topics type="detached">
+                    <topic id="0n59q345j8pcfbcdks1k74vn81" modified-by="Toby Qin" style-id="11hrf4ucn5npip403qkd2anp5i"
+                           timestamp="1488352971145">
+                        <title svg:width="500">only first sheet will be treat as test case design !</title>
+                        <position svg:x="129" svg:y="193"/>
+                    </topic>
+                </topics>
+            </children>
+            <extensions>
+                <extension provider="org.xmind.ui.map.unbalanced">
+                    <content>
+                        <right-number>3</right-number>
+                    </content>
+                </extension>
+            </extensions>
+        </topic>
+        <title>Sheet 2</title>
+    </sheet>
+</xmap-content>

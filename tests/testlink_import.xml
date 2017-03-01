@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="" >
+    <testsuite name="suite 1" >
+        <details><![CDATA[<p>suite detail</p>]]>
+        </details>
+        <testcase name="test name 1" >
+            <summary><![CDATA[test summary ]]></summary>
+            <preconditions><![CDATA[pre conditions ]]></preconditions>
+            <execution_type><![CDATA[]]></execution_type>
+            <importance><![CDATA[3]]></importance>
+            <steps>
+                <step>
+                    <step_number><![CDATA[1]]></step_number>
+                    <actions><![CDATA[step 1]]></actions>
+                    <expectedresults><![CDATA[ecpected 1]]></expectedresults>
+                    <execution_type><![CDATA[]]></execution_type>
+                </step>
+                <step>
+                    <step_number><![CDATA[2]]></step_number>
+                    <actions><![CDATA[step 2]]></actions>
+                    <expectedresults><![CDATA[]]></expectedresults>
+                    <execution_type><![CDATA[]]></execution_type>
+                </step>
+                <step>
+                    <step_number><![CDATA[3]]></step_number>
+                    <actions><![CDATA[step 3]]></actions>
+                    <expectedresults><![CDATA[expected 3]]></expectedresults>
+                    <execution_type><![CDATA[]]></execution_type>
+                </step>
+            </steps>
+            <custom_fields>
+                <custom_field>
+                    <name><![CDATA[Status]]></name>
+                    <value><![CDATA[]]></value>
+                </custom_field>
+                <custom_field>
+                    <name><![CDATA[Test Name]]></name>
+                    <value><![CDATA[]]></value>
+                </custom_field>
+            </custom_fields>
+        </testcase>
+    </testsuite>
+    <testsuite name="suite 2" >
+        <details><![CDATA[<p>detail 2</p>]]>
+        </details>
+        <testcase name="with same &gt; = &amp; &lt;" >
+            <summary><![CDATA[summary 2]]></summary>
+            <preconditions><![CDATA[]]></preconditions>
+            <execution_type><![CDATA[]]></execution_type>
+            <importance><![CDATA[2]]></importance>
+            <steps>
+                <step>
+                    <step_number><![CDATA[1]]></step_number>
+                    <actions><![CDATA[step 1]]></actions>
+                    <expectedresults><![CDATA[expected 1]]></expectedresults>
+                    <execution_type><![CDATA[]]></execution_type>
+                </step>
+            </steps>
+            <custom_fields>
+                <custom_field>
+                    <name><![CDATA[Status]]></name>
+                    <value><![CDATA[]]></value>
+                </custom_field>
+                <custom_field>
+                    <name><![CDATA[Test Name]]></name>
+                    <value><![CDATA[]]></value>
+                </custom_field>
+            </custom_fields>
+        </testcase>
+    </testsuite>
+</testsuite>
