@@ -1,9 +1,11 @@
-from src.xmind_reader import *
-from os import path
 import logging
+from os import path
 
-xml_path = path.join(path.dirname(__file__), 'xmind_content.xml')
-root_node = read_xml_as_etree(xml_path)
+from src import xmind_parser
+from src.xmind_parser import *
+
+xmind_parser.xml_dir = path.dirname(__file__)
+root_node = read_xml_as_etree(join(xml_dir, content_xml))
 
 
 def test_parse_step():
@@ -43,7 +45,7 @@ def test_parse_testcase():
     assert testcase.steps[0].action == 'step 1'
     assert testcase.summary == "summary"
     assert testcase.importance == 'priority-1'
-    assert testcase.preconditions == ""
+    assert testcase.preconditions == "precondition"
 
 
 def test_parse_suite():
@@ -57,8 +59,9 @@ def test_parse_suite():
 
 
 def test_parse_xmind_content():
-    test_suite = parse_xmind_content(xml_path)
+    test_suite = parse_xmind_content()
     assert isinstance(test_suite, TestSuite)
     assert test_suite.name == ""
     assert len(test_suite.sub_suites) == 5
     assert test_suite.sub_suites[0].name == "demo suite"
+    assert test_suite.sub_suites[1].name == "apple suite"

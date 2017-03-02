@@ -1,11 +1,17 @@
-from .datatype import *
+"""
+Module to parse xmind file into test suite and test case objects.
+"""
+import logging
+import re
+from os.path import join, exists
 from xml.etree import ElementTree as  ET
 from xml.etree.ElementTree import Element
-import re
-import logging
-from os.path import join, dirname, exists
 
-cache = {}
+from .datatype import *
+
+xml_dir = ""
+content_xml = "content.xml"
+comments_xml = "comments.xml"
 
 
 def read_xmind(xmind_path):
@@ -13,12 +19,9 @@ def read_xmind(xmind_path):
     pass
 
 
-def parse_xmind_content(content_xml_path):
+def parse_xmind_content():
     """Main function to read the content xml and return test suite data."""
-    cache['content_xml_path'] = content_xml_path
-    cache['content_xml_dir'] = dirname(content_xml_path)
-
-    xml_root = read_xml_as_etree(content_xml_path)
+    xml_root = read_xml_as_etree(join(xml_dir, content_xml))
     assert isinstance(xml_root, Element)
 
     try:
@@ -52,13 +55,11 @@ def read_xml_as_etree(xml_path):
 
 
 def comments_of(node):
-    comments_xml = join(cache['content_xml_dir'], 'comments.xml')
-
-    if exists(comments_xml):
-        xml_root = read_xml_as_etree(comments_xml)
+    xml_path = join(xml_dir, comments_xml)
+    if exists(xml_path):
+        xml_root = read_xml_as_etree(xml_path)
         node_id = node.attrib['id']
-        comments = xml_root.find('comments')
-        comment = comments.find('./comment[@object-id="{}"]'.format(node_id))
+        comment = xml_root.find('./comment[@object-id="{}"]'.format(node_id))
 
         if comment:
             return comment.find('content').text
@@ -131,7 +132,7 @@ def parse_testcase(testcase_node):
 def parse_suite(suite_node):
     suite = TestSuite()
     suite.name = title_of(suite_node)
-    suite.details = "todo"
+    suite.details = note_of(suite_node)
     suite.testcase_list = []
 
     for node in children_topics_of(suite_node):
