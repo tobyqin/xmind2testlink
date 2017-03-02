@@ -1,7 +1,8 @@
 class TestSuite():
-    sub_suite = None
+    sub_suites = None
     name = ""
     details = ""
+    testcase_list = None
 
 
 class TestCase():
