@@ -3,6 +3,9 @@ from xml.etree import ElementTree as  ET
 from xml.etree.ElementTree import Element
 import re
 import logging
+from os.path import join, dirname, exists
+
+cache = {}
 
 
 def read_xmind(xmind_path):
@@ -12,6 +15,8 @@ def read_xmind(xmind_path):
 
 def parse_xmind_content(content_xml_path):
     """Main function to read the content xml and return test suite data."""
+    cache['content_xml_path'] = content_xml_path
+    cache['content_xml_dir'] = dirname(content_xml_path)
 
     xml_root = read_xml_as_etree(content_xml_path)
     assert isinstance(xml_root, Element)
@@ -46,8 +51,38 @@ def read_xml_as_etree(xml_path):
         return ET.fromstring(xml_content)
 
 
+def comments_of(node):
+    comments_xml = join(cache['content_xml_dir'], 'comments.xml')
+
+    if exists(comments_xml):
+        xml_root = read_xml_as_etree(comments_xml)
+        node_id = node.attrib['id']
+        comments = xml_root.find('comments')
+        comment = comments.find('./comment[@object-id="{}"]'.format(node_id))
+
+        if comment:
+            return comment.find('content').text
+
+
 def title_of(node):
     return node.find('title').text
+
+
+def note_of(topic_node):
+    note_node = topic_node.find('notes')
+
+    if note_node:
+        note = note_node.find('plain').text
+        return note.strip()
+
+
+def maker_of(topic_node, maker_prefix):
+    maker_node = topic_node.find('marker-refs')
+    if maker_node:
+        for maker in maker_node:
+            maker_id = maker.attrib['marker-id']
+            if maker_id.startswith(maker_prefix):
+                return maker_id
 
 
 def children_topics_of(topic_node):
@@ -82,8 +117,11 @@ def parse_steps(steps_node):
 def parse_testcase(testcase_node):
     testcase = TestCase()
     testcase.name = title_of(testcase_node)
-    steps_node = children_topics_of(testcase_node
-                                    )
+    testcase.summary = note_of(testcase_node)
+    testcase.importance = maker_of(testcase_node, 'priority')
+    testcase.preconditions = comments_of(testcase_node)
+    steps_node = children_topics_of(testcase_node)
+
     if steps_node:
         testcase.steps = parse_steps(steps_node)
 

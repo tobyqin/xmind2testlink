@@ -41,8 +41,8 @@ def test_parse_testcase():
     assert isinstance(testcase, TestCase)
     assert testcase.name == 'test case 1'
     assert testcase.steps[0].action == 'step 1'
-    assert testcase.importance == 1
     assert testcase.summary == "summary"
+    assert testcase.importance == 'priority-1'
     assert testcase.preconditions == ""
 
 
