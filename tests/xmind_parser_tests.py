@@ -1,8 +1,8 @@
-from os import path
+from os.path import join, dirname
 
 from src.xmind_parser import *
 
-xml_dir = path.dirname(__file__)
+xml_dir = dirname(__file__)
 root_node = xmind_xml_to_etree(join(xml_dir, content_xml))
 xmind_file = join(xml_dir, 'tests.xmind')
 
