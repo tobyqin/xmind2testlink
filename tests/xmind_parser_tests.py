@@ -1,11 +1,16 @@
-import logging
 from os import path
 
-from src import xmind_parser
 from src.xmind_parser import *
 
-xmind_parser.xml_dir = path.dirname(__file__)
-root_node = read_xml_as_etree(join(xml_dir, content_xml))
+xml_dir = path.dirname(__file__)
+root_node = xmind_xml_to_etree(join(xml_dir, content_xml))
+xmind_file = join(xml_dir, 'tests.xmind')
+
+with open(join(xml_dir, content_xml)) as f:
+    cache[content_xml] = f.read()
+
+with open(join(xml_dir, comments_xml)) as f:
+    cache[comments_xml] = f.read()
 
 
 def test_parse_step():
@@ -61,6 +66,14 @@ def test_parse_suite():
 def test_parse_xmind_content():
     test_suite = parse_xmind_content()
     assert isinstance(test_suite, TestSuite)
+    assert test_suite.name == ""
+    assert len(test_suite.sub_suites) == 5
+    assert test_suite.sub_suites[0].name == "demo suite"
+    assert test_suite.sub_suites[1].name == "apple suite"
+
+
+def test_parse_xmind():
+    test_suite = parse_xmind_file(xmind_file)
     assert test_suite.name == ""
     assert len(test_suite.sub_suites) == 5
     assert test_suite.sub_suites[0].name == "demo suite"

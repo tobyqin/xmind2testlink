@@ -3,25 +3,33 @@ Module to parse xmind file into test suite and test case objects.
 """
 import logging
 import re
-from os.path import join, exists
 from xml.etree import ElementTree as  ET
 from xml.etree.ElementTree import Element
+from zipfile import ZipFile
 
 from .datatype import *
 
-xml_dir = ""
 content_xml = "content.xml"
 comments_xml = "comments.xml"
+cache = {}
 
 
-def read_xmind(xmind_path):
+def parse_xmind_file(file_path):
     """Extract xmind as zip file then read the content.xml"""
-    pass
+    with ZipFile(file_path) as xmind:
+        for f in xmind.namelist():
+            if f == content_xml:
+                cache[content_xml] = xmind.open(f).read().decode()
+
+            if f == comments_xml:
+                cache[comments_xml] = xmind.open(f).read().decode()
+
+    return parse_xmind_content()
 
 
 def parse_xmind_content():
     """Main function to read the content xml and return test suite data."""
-    xml_root = read_xml_as_etree(join(xml_dir, content_xml))
+    xml_root = xmind_content_to_etree(cache[content_xml])
     assert isinstance(xml_root, Element)
 
     try:
@@ -45,19 +53,21 @@ def parse_xmind_content():
     return root_suite
 
 
-def read_xml_as_etree(xml_path):
-    with open(xml_path) as f:
-        xml_content = f.read()
+def xmind_content_to_etree(content):
+    # Remove the default namespace definition (xmlns="http://some/namespace")
+    xml_content = re.sub(r'\sxmlns="[^"]+"', '', content, count=1)
+    return ET.fromstring(xml_content)
 
-        # Remove the default namespace definition (xmlns="http://some/namespace")
-        xml_content = re.sub(r'\sxmlns="[^"]+"', '', xml_content, count=1)
-        return ET.fromstring(xml_content)
+
+def xmind_xml_to_etree(xml_path):
+    with open(xml_path) as f:
+        content = f.read()
+        return xmind_content_to_etree(content)
 
 
 def comments_of(node):
-    xml_path = join(xml_dir, comments_xml)
-    if exists(xml_path):
-        xml_root = read_xml_as_etree(xml_path)
+    if cache.get(comments_xml, None):
+        xml_root = xmind_content_to_etree(cache[comments_xml])
         node_id = node.attrib['id']
         comment = xml_root.find('./comment[@object-id="{}"]'.format(node_id))
 
