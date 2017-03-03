@@ -47,10 +47,11 @@ def test_parse_testcase():
     testcase = parse_testcase(testcase_node)
     assert isinstance(testcase, TestCase)
     assert testcase.name == 'test case 1'
-    assert testcase.steps[0].action == 'step 1'
     assert testcase.summary == "summary"
     assert testcase.importance == 'priority-1'
     assert testcase.preconditions == "precondition"
+    assert testcase.steps[0].action == 'step 1'
+    assert testcase.steps[1].number == 2
 
 
 def test_parse_suite():
