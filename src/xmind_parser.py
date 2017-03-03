@@ -7,7 +7,7 @@ from xml.etree import ElementTree as  ET
 from xml.etree.ElementTree import Element
 from zipfile import ZipFile
 
-from .datatype import *
+from datatype import *
 
 content_xml = "content.xml"
 comments_xml = "comments.xml"

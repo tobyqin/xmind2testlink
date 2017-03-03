@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<testsuite name="">
+    <testsuite name="demo suite">
+        <testcase name="test case 1">
+            <summary>summary</summary>
+            <preconditions>precondition</preconditions>
+            <importance>3</importance>
+            <steps>
+                <step>
+                    <actions>step 1</actions>
+                    <expectedresults>expected 1</expectedresults>
+                    <step_number>1</step_number>
+                </step>
+                <step>
+                    <actions>step 2</actions>
+                    <expectedresults>expected 2</expectedresults>
+                    <step_number>2</step_number>
+                </step>
+            </steps>
+        </testcase>
+        <testcase name="test case 2">
+            <summary>summary</summary>
+            <preconditions>precondition</preconditions>
+            <importance>3</importance>
+            <steps>
+                <step>
+                    <actions>step 1</actions>
+                    <expectedresults>expected 1</expectedresults>
+                    <step_number>1</step_number>
+                </step>
+                <step>
+                    <actions>step 2</actions>
+                    <expectedresults>expected 2</expectedresults>
+                    <step_number>2</step_number>
+                </step>
+            </steps>
+        </testcase>
+        <testcase name="test case 3">
+            <summary>summary</summary>
+            <preconditions>given something</preconditions>
+            <importance>2</importance>
+            <steps>
+                <step>
+                    <actions>step 1</actions>
+                    <expectedresults>expected 1</expectedresults>
+                    <step_number>1</step_number>
+                </step>
+                <step>
+                    <actions>step 2</actions>
+                    <expectedresults>expected 2</expectedresults>
+                    <step_number>2</step_number>
+                </step>
+                <step>
+                    <actions>step 3</actions>
+                    <expectedresults>expected 3</expectedresults>
+                    <step_number>3</step_number>
+                </step>
+            </steps>
+        </testcase>
+    </testsuite>
+    <testsuite name="apple suite">
+        <details>this will be a detail or summary note</details>
+        <testcase name="test case title for apple 1">
+            <summary>note will be summary field for this test case</summary>
+            <preconditions>comments will be showing as precondition</preconditions>
+            <importance>3</importance>
+            <steps>
+                <step>
+                    <actions>step1 action</actions>
+                    <expectedresults>step1 expected</expectedresults>
+                    <step_number>1</step_number>
+                </step>
+                <step>
+                    <actions>step2 action</actions>
+                    <expectedresults>step2 expected</expectedresults>
+                    <step_number>2</step_number>
+                </step>
+                <step>
+                    <actions>step3 action</actions>
+                    <expectedresults>step3 expected</expectedresults>
+                    <step_number>3</step_number>
+                </step>
+            </steps>
+        </testcase>
+        <testcase name="test case title for apple 2">
+            <summary>summary of test case</summary>
+            <importance>2</importance>
+        </testcase>
+    </testsuite>
+    <testsuite name="banana suite">
+        <testcase name="my test case 1">
+            <preconditions>only with precondition</preconditions>
+            <importance>1</importance>
+            <steps>
+                <step>
+                    <actions>step 1 action without expected</actions>
+                    <step_number>1</step_number>
+                </step>
+                <step>
+                    <actions>step 2 action</actions>
+                    <expectedresults>step2 expected</expectedresults>
+                    <step_number>2</step_number>
+                </step>
+                <step>
+                    <actions>step 3 action</actions>
+                    <expectedresults>step 3 expected</expectedresults>
+                    <step_number>3</step_number>
+                </step>
+            </steps>
+        </testcase>
+        <testcase name="my test case 2">
+            <importance>3</importance>
+        </testcase>
+    </testsuite>
+    <testsuite name="orange suite">
+        <testcase name="my test case 1">
+            <importance>2</importance>
+            <steps>
+                <step>
+                    <actions>without priority for this test</actions>
+                    <step_number>1</step_number>
+                </step>
+            </steps>
+        </testcase>
+        <testcase name="my test case 2">
+            <importance>2</importance>
+            <steps>
+                <step>
+                    <actions>start from this step</actions>
+                    <expectedresults>expected something</expectedresults>
+                    <step_number>2</step_number>
+                </step>
+            </steps>
+        </testcase>
+        <testcase name="test 3 without steps">
+            <importance>2</importance>
+        </testcase>
+    </testsuite>
+</testsuite>

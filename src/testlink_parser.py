@@ -1,3 +1,6 @@
+"""
+Module to parse test suite objects into testlink xml.
+"""
 import os
 from io import BytesIO
 from os.path import exists
@@ -5,7 +8,7 @@ from xml.dom import minidom
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, SubElement
 
-from .datatype import *
+from datatype import *
 
 
 class Tags():
