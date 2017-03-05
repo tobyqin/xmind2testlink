@@ -17,12 +17,17 @@ from testlink_parser import to_testlink_xml_file
 from xmind_parser import parse_xmind_file
 
 
+def convert_xmind(xmind):
+    xml_out = xmind[:-5] + 'xml'
+    suite = parse_xmind_file(xmind)
+    to_testlink_xml_file(suite, xml_out)
+    return xml_out
+
+
 def main():
     if len(sys.argv) > 1 and sys.argv[1].endswith('.xmind'):
         xmind = sys.argv[1]
-        xml_out = xmind[:-5] + 'xml'
-        suite = parse_xmind_file(xmind)
-        to_testlink_xml_file(suite, xml_out)
+        xml_out = convert_xmind(xmind)
         print("Generated: {}".format(xml_out))
     else:
         print(__doc__)

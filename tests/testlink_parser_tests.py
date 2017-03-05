@@ -1,5 +1,6 @@
+from xmind_parser_tests import *
+
 from src.testlink_parser import *
-from .xmind_parser_tests import *
 
 test_suite = parse_xmind_file(xmind_file)
 test_link_xml = 'testlink.xml'
