@@ -91,3 +91,4 @@ uploads/
 
 # Rope project settings
 .ropeproject
+.sqlite3
