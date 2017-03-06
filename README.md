@@ -3,36 +3,35 @@ With this project, you will be able to convert [xmind](https://www.xmind.net/) t
 
 ## Design test cases via [xmind](https://www.xmind.net/)
 
-Xmind is an excellent mindmap tool, which can help you design test cases easily. To create a *convertible* xmind, please do it like this:
+Xmind is an excellent mindmap tool, which can help you design test cases easily.  To create a ***convertible*** xmind, please design your test cases like this:
 
 ![test_case_by_xmind](doc/test_case_by_xmind.png)
 
-Please note:
+**Please note:**
 
-1. The root topic will not be converted, treat it as target suite node in testlink.
-2. `Notes` for a test suite will be converted to `details` in testlink.
-3. `Notes` for a test case will be converted to `summary` in testlink.
-4. `Comments` for a test case will be converted to `preconditions` in testlink.
-5. `Priority` maker for a test case will be converted to `importance` in testlink.
-6. Sub topic for test case will be treated as test step.
+1. `Notes` for a test suite will be converted to `details` in TestLink.
+2. `Notes` for a test case will be converted to `summary` in TestLink.
+3. `Comments` for a test case will be converted to `preconditions` in TestLink.
+4. `Priority` maker for a test case will be converted to `importance` in TestLink.
+5. Sub topics for a test case will be treated as test steps.
    - It is okay to design test step **with action** but **without expected results**.
-7. Use `!` to ignore any test suite / test case / test step that you don't want to import.
+6. Use `!` to ignore any test suite / test case / test step that you don't want to convert.
+7. The root topic will not be converted, please treat it as target suite node in TestLink.
 8. Free topic and notes will not be converted.
-9. Only mindmap in first sheet will be converted.
+9. Only the mindmap in first sheet will be converted.
 
-Hint: Download the sample xmind file: [test_case_by_xmind](doc/test_case_by_xmind.xmind)
+Download the sample xmind file: [test_case_by_xmind](doc/test_case_by_xmind.xmind)
 
 ## Generate the TestLink xml file
 
-Once your xmind had been created, use this small tool to convert it to testlink recognized xml file, cd the `src` directory in command prompt:
+Once your xmind had been created, use bellow command to convert it to TestLink recognized xml file.
 
 ```shell
+cd src
 python xmind2testlink.py /path/to/testcase.xmind
 ```
 
 An xml with same name will be generated in your xmind directory.
-
-
 
 ## Import the xml into TestLink
 
@@ -54,13 +53,11 @@ The field mapping looks like below figure.
 
 ## Advanced usage
 
-I also build a simple webpage to host this feature, you could go into the `web` folder to checkout.
-
-To starting the website, the command is:
+A simple webpage to host this feature also has been built in  `web` folder. To starting the website, here is the command:
 
 ```shell
 cd web
 python application.py
 ```
 
-Start a browser, then you will be able to convert xmind to TestLink via http://127.0.0.1:5000.
+Start a browser, then you will be able to convert xmind to TestLink via http://127.0.0.1:5000. I am not good at web design, but I am trying my best to provide a friendly interface :(-)
