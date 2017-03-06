@@ -54,8 +54,12 @@ def upload_file():
         file = request.files['file']
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            filename = '{}_{}.xmind'.format(filename[:-6], datetime.now().strftime('%Y%m%d_%H%M%S'))
             upload_to = join(app.config['UPLOAD_FOLDER'], filename)
+
+            if exists(upload_to):
+                filename = '{}_{}.xmind'.format(filename[:-6], datetime.now().strftime('%Y%m%d_%H%M%S'))
+                upload_to = join(app.config['UPLOAD_FOLDER'], filename)
+
             file.save(upload_to)
             convert_xmind(upload_to)
             return redirect(url_for('xmind_file', filename=filename))
