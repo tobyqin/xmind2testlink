@@ -7,7 +7,7 @@ Xmind is an excellent mindmap tool, which can help you design test cases easily.
 
 ![test_case_by_xmind](doc/test_case_by_xmind.png)
 
-**Please note:**
+**Guidelines & Rules:**
 
 1. `Notes` for a test suite will be converted to `details` in TestLink.
 2. `Notes` for a test case will be converted to `summary` in TestLink.
