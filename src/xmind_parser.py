@@ -144,9 +144,11 @@ def parse_suite(suite_node):
     suite.name = title_of(suite_node)
     suite.details = note_of(suite_node)
     suite.testcase_list = []
+    testcase_nodes = children_topics_of(suite_node)
 
-    for node in children_topics_of(suite_node):
-        testcase = parse_testcase(node)
-        suite.testcase_list.append(testcase)
+    if testcase_nodes:
+        for node in testcase_nodes:
+            testcase = parse_testcase(node)
+            suite.testcase_list.append(testcase)
 
     return suite
