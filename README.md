@@ -1,5 +1,6 @@
 # xmind2testlink
-With this project, you will be able to convert [xmind](https://www.xmind.net/) tests to [testlink](http://www.testlink.org/) tests xml files.
+
+With this tool, you will be able to convert [xmind](https://www.xmind.net/) tests to [testlink](http://www.testlink.org/) tests xml files. You should have python installed before running it.
 
 ## Design test cases via [xmind](https://www.xmind.net/)
 
