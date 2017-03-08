@@ -2,8 +2,9 @@
 Documentation
 -------------
 xmind2testlink is a tool to help you convert xmind file to testlink recognized xml files,
-then you can import it into testlink as test suite and test cases. For more detail, please
-go to: https://github.com/tobyqin/xmind2testlink
+then you can import it into testlink as test suite and test cases.
+
+For more detail, please go to: https://github.com/tobyqin/xmind2testlink
 
 """
 from os import path
