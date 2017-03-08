@@ -64,8 +64,9 @@ def index():
             file.save(upload_to)
             convert_xmind(upload_to)
             download_xml = filename[:-5] + 'xml'
+            flash('Success!')
         else:
-            flash("{} is not an xmind file!".format(file.filename))
+            flash("<b>{}</b> is not an xmind file!".format(file.filename))
 
     return render_template('index.html', download_xml=download_xml)
 
