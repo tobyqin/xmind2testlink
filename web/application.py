@@ -43,14 +43,28 @@ def teardown_request(exception):
         db.close()
 
 
+def insert_record(xmind_name, note=''):
+    c = g.db.cursor()
+    now = str(datetime.now())
+    sql = "insert into records (name,create_on,note) VALUES (?,?,?)"
+    c.execute(sql, (xmind_name, now, str(note)))
+    g.db.commit()
+
+
+def get_records(limit=10):
+    c = g.db.cursor()
+    sql = "select * from records order by id desc limit {}}".format(int(limit))
+    c.execute(sql)
+    return c.fetchall()
+
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
 @app.route('/', methods=['GET', 'POST'])
-def index():
-    download_xml = None
+def index(download_xml=None):
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
@@ -63,6 +77,7 @@ def index():
 
             file.save(upload_to)
             convert_xmind(upload_to)
+            insert_record(filename)
             download_xml = filename[:-5] + 'xml'
             flash('Success!')
         else:
