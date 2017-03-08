@@ -4,7 +4,8 @@ from contextlib import closing
 from datetime import datetime
 from os.path import join, exists
 
-from flask import Flask, request, redirect, url_for, send_from_directory, g
+from flask import Flask, request, redirect, url_for, send_from_directory, g, render_template
+from flask import flash
 from werkzeug.utils import secure_filename
 
 from src.xmind2testlink import convert_xmind
@@ -16,6 +17,7 @@ DATABASE = './data.sqlite3'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
+app.secret_key = os.urandom(32)
 
 
 def connect_db():
@@ -31,13 +33,11 @@ def init_db():
 
 @app.before_request
 def before_request():
-    app.logger.info('request start...')
     g.db = connect_db()
 
 
 @app.teardown_request
 def teardown_request(exception):
-    app.logger.info('request end...')
     db = getattr(g, 'db', None)
     if db is not None:
         db.close()
@@ -64,16 +64,9 @@ def upload_file():
             convert_xmind(upload_to)
             return redirect(url_for('xmind_file', filename=filename))
         else:
-            return "Please upload xmind file!"
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form action="" method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
-         <input type=submit value=Upload>
-    </form>
-    '''
+            flash("{} is not an xmind file!".format(file.filename))
+
+    return render_template('index.html')
 
 
 @app.route('/xmind/to/testlink/<filename>')
