@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>Xmind to TestLink Converter</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    {% if download_xml %}
+        <script type="text/javascript">
+            function download_xml() {
+                window.location.href = '{{ url_for('download_file', filename=download_xml) }}'
+            }
+            window.onload = download_xml;
+        </script>
+    {% endif %}
 </head>
 <body>
 <header>

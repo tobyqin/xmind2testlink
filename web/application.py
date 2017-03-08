@@ -4,7 +4,7 @@ from contextlib import closing
 from datetime import datetime
 from os.path import join, exists
 
-from flask import Flask, request, redirect, url_for, send_from_directory, g, render_template
+from flask import Flask, request, send_from_directory, g, render_template
 from flask import flash
 from werkzeug.utils import secure_filename
 
@@ -49,7 +49,8 @@ def allowed_file(filename):
 
 
 @app.route('/', methods=['GET', 'POST'])
-def upload_file():
+def index():
+    download_xml = None
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
@@ -62,15 +63,14 @@ def upload_file():
 
             file.save(upload_to)
             convert_xmind(upload_to)
-            xml_name = filename[:-5] + 'xml'
-            return redirect(url_for('download_file', filename=xml_name))
+            download_xml = filename[:-5] + 'xml'
         else:
             flash("{} is not an xmind file!".format(file.filename))
 
-    return render_template('index.html')
+    return render_template('index.html', download_xml=download_xml)
 
 
-@app.route('/xmind/to/testlink/<filename>')
+@app.route('/testlink/<filename>')
 def download_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
