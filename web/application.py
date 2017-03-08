@@ -62,7 +62,8 @@ def upload_file():
 
             file.save(upload_to)
             convert_xmind(upload_to)
-            return redirect(url_for('xmind_file', filename=filename))
+            xml_name = filename[:-5] + 'xml'
+            return redirect(url_for('download_file', filename=xml_name))
         else:
             flash("{} is not an xmind file!".format(file.filename))
 
@@ -70,9 +71,8 @@ def upload_file():
 
 
 @app.route('/xmind/to/testlink/<filename>')
-def xmind_file(filename):
-    xml_name = filename[:-5] + 'xml'
-    return send_from_directory(app.config['UPLOAD_FOLDER'], xml_name)
+def download_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
 
 
 @app.route('/uploads/<filename>')
