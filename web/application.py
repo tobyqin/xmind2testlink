@@ -13,7 +13,7 @@ from src.xmind2testlink import xmind_to_testlink
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = ['xmind']
 DEBUG = True
-DATABASE = './data.sqlite3'
+DATABASE = './data.db3'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
