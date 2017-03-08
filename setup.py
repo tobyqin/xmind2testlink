@@ -11,8 +11,8 @@ with open(path.join(current_dir, "CHANGELOG.md"), encoding="utf-8") as f:
     long_description += "\n" + f.read()
 
 classifiers = ["License :: OSI Approved :: MIT License",
-               "Topic :: Software Development :: Utilities",
-               "Topic :: Software Development :: Utilities",
+               "Topic :: Software Development",
+               "Topic :: Utilities",
                "Operating System :: Microsoft :: Windows",
                "Operating System :: MacOS :: MacOS X"] + [
                   ("Programming Language :: Python :: %s" % x) for x in "2.7 3.5".split()]
