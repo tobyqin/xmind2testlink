@@ -1,11 +1,17 @@
+"""
+Documentation
+-------------
+xmind2testlink is a tool to help you convert xmind file to testlink recognized xml files,
+then you can import it into testlink as test suite and test cases. For more detail, please
+go to: https://github.com/tobyqin/xmind2testlink
+
+"""
 from os import path
 
 from setuptools import setup, find_packages
 
 current_dir = path.abspath(path.dirname(__file__))
-
-with open(path.join(current_dir, "README.md"), encoding="utf-8") as f:
-    long_description = f.read()
+long_description = __doc__
 
 with open(path.join(current_dir, "CHANGELOG.md"), encoding="utf-8") as f:
     long_description += "\n" + f.read()
@@ -32,7 +38,7 @@ def main():
         keywords="xmind testlink import converter testing testcase",
         long_description=long_description,
         classifiers=classifiers,
-        version="1.0.0",
+        version="1.0.2",
         author="Toby Qin",
         author_email="toby.qin@live.com",
         url="https://github.com/tobyqin/xmind2testlink",
