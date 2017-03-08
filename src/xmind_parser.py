@@ -11,7 +11,6 @@ from datatype import *
 
 content_xml = "content.xml"
 comments_xml = "comments.xml"
-cache = {}
 
 
 def parse_xmind_file(file_path):

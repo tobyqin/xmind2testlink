@@ -38,7 +38,7 @@ def to_testlink_xml_file(testsuite, path_to_xml):
         os.remove(path_to_xml)
 
     with open(path_to_xml, 'w') as f:
-        f.write(prettify(content))
+        f.write(prettify_xml(content))
 
 
 def _convert_importance(importance_value):
@@ -53,6 +53,7 @@ def to_testlink_xml_content(testsuite):
     assert isinstance(testsuite, TestSuite)
     root_suite = Element(Tags.testsuite)
     root_suite.set(Attributes.name, testsuite.name)
+    cache['testcase_count'] = 0
 
     for suite in testsuite.sub_suites:
         assert isinstance(suite, TestSuite)
@@ -73,6 +74,7 @@ def to_testlink_xml_content(testsuite):
             if testcase.name.startswith('!'):
                 continue
 
+            cache['testcase_count'] += 1
             testcase_element = SubElement(suite_element, Tags.testcase)
             testcase_element.set(Attributes.name, testcase.name)
 
@@ -123,7 +125,7 @@ def to_testlink_xml_content(testsuite):
     return f.getvalue()
 
 
-def prettify(xml_string):
+def prettify_xml(xml_string):
     """Return a pretty-printed XML string for the Element.
     """
     reparsed = minidom.parseString(xml_string)

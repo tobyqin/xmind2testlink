@@ -13,25 +13,28 @@ Example:
 
 import sys
 
-from testlink_parser import to_testlink_xml_file
+from datatype import cache
+from testlink_parser import to_testlink_xml_file, to_testlink_xml_content
 from xmind_parser import parse_xmind_file
 
 
-def convert_xmind(xmind):
+def xmind_to_testlink(xmind):
     xml_out = xmind[:-5] + 'xml'
     suite = parse_xmind_file(xmind)
     to_testlink_xml_file(suite, xml_out)
     return xml_out
 
 
-def main():
-    if len(sys.argv) > 1 and sys.argv[1].endswith('.xmind'):
-        xmind = sys.argv[1]
-        xml_out = convert_xmind(xmind)
-        print("Generated: {}".format(xml_out))
-    else:
-        print(__doc__)
+def get_testcase_count(xmind):
+    suite = parse_xmind_file(xmind)
+    to_testlink_xml_content(suite)
+    return cache.get('testcase_count', 0)
 
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) > 1 and sys.argv[1].endswith('.xmind'):
+        xmind = sys.argv[1]
+        xml_out = xmind_to_testlink(xmind)
+        print("Generated: {}".format(xml_out))
+    else:
+        print(__doc__)

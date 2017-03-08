@@ -19,3 +19,6 @@ class TestStep():
     action = ""
     expected = ""
     execution_type = ""
+
+
+cache = {}

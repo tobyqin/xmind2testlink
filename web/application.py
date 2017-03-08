@@ -8,7 +8,7 @@ from flask import Flask, request, send_from_directory, g, render_template
 from flask import flash
 from werkzeug.utils import secure_filename
 
-from src.xmind2testlink import convert_xmind
+from src.xmind2testlink import xmind_to_testlink
 
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = ['xmind']
@@ -76,7 +76,7 @@ def index(download_xml=None):
                 upload_to = join(app.config['UPLOAD_FOLDER'], filename)
 
             file.save(upload_to)
-            convert_xmind(upload_to)
+            xmind_to_testlink(upload_to)
             insert_record(filename)
             download_xml = filename[:-5] + 'xml'
             flash('Success!')
