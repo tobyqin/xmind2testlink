@@ -1,6 +1,6 @@
 from os.path import join, dirname
 
-from src.xmind_parser import *
+from xmind2testlink.xmind_parser import *
 
 xml_dir = dirname(__file__)
 root_node = xmind_xml_to_etree(join(xml_dir, content_xml))

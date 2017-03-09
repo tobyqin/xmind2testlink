@@ -7,6 +7,7 @@ then you can import it into testlink as test suite and test cases.
 For more detail, please go to: https://github.com/tobyqin/xmind2testlink
 
 """
+from codecs import open
 from os import path
 
 from setuptools import setup, find_packages
@@ -25,8 +26,8 @@ classifiers = ["License :: OSI Approved :: MIT License",
                   ("Programming Language :: Python :: %s" % x) for x in "2.7 3.5".split()]
 
 
-def make_cmdline_entry_points():
-    target = "src.xmind2testlink:main"
+def command_line():
+    target = "xmind2testlink.main:main"
     entry_points = []
     entry_points.append("xmind2testlink=%s" % target)
     return entry_points
@@ -39,16 +40,14 @@ def main():
         keywords="xmind testlink import converter testing testcase",
         long_description=long_description,
         classifiers=classifiers,
-        version="1.0.3",
+        version="1.0.7",
         author="Toby Qin",
         author_email="toby.qin@live.com",
         url="https://github.com/tobyqin/xmind2testlink",
         packages=find_packages(exclude=['tests', 'tests.*']),
         package_data={},
         install_requires=[],
-        entry_points={
-            "console_scripts": make_cmdline_entry_points(),
-        },
+        entry_points={"console_scripts": command_line(), },
         zip_safe=False,
     )
 
