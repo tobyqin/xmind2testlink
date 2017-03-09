@@ -7,7 +7,6 @@ from os.path import join, exists
 from flask import Flask, request, send_from_directory, g, render_template
 from flask import flash
 from werkzeug.utils import secure_filename
-
 from xmind2testlink.main import xmind_to_testlink
 
 UPLOAD_FOLDER = './uploads'
