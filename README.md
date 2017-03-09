@@ -2,6 +2,32 @@
 
 With this tool, you will be able to convert [xmind](https://www.xmind.net/) tests to [testlink](http://www.testlink.org/) tests xml files. You should have python installed before running it.
 
+## Installation and quick start
+
+The most easy to install xmind2testlink is using pip command:
+
+```
+pip install xmind2testlink -U
+```
+
+Now you are ready to convert an xmind to TestLink xml:
+
+```
+xmind2testlink /path/to/testcase.xmind
+Generated: testcase.xml
+```
+
+To build another tool with this package, you can do it like this:
+
+```python
+from xmind2testlink.xmind_parser import *
+from xmind2testlink.testlink_parser import *
+
+# do your work
+```
+
+
+
 ## Design test cases via [xmind](https://www.xmind.net/)
 
 Xmind is an excellent mindmap tool, which can help you design test cases easily.  To create a ***convertible*** xmind, please design your test cases like this:
@@ -28,8 +54,7 @@ Download the sample xmind file: [test_case_by_xmind](doc/test_case_by_xmind.xmin
 Once your xmind had been created, use bellow command to convert it to TestLink recognized xml file.
 
 ```shell
-cd src
-python xmind2testlink.py /path/to/testcase.xmind
+xmind2testlink /path/to/testcase.xmind
 ```
 
 An xml with same name will be generated in your xmind directory.
