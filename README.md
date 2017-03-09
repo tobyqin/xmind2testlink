@@ -83,7 +83,11 @@ A simple webpage to host this feature also has been built in  `web` folder. To s
 
 ```shell
 cd web
+pip install -r requirements.txt -U
 python application.py
+
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+* Restarting with stat
 ```
 
 Start a browser, then you will be able to convert xmind to TestLink via http://127.0.0.1:5000. I am not good at web design, but I am trying my best to provide a friendly interface :(-)
