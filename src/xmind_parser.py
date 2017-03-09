@@ -42,7 +42,7 @@ def parse_xmind_content():
     root_suite.sub_suites = []
     suite_nodes = children_topics_of(xml_root_suite)
 
-    if not suite_nodes:
+    if suite_nodes is None:
         raise ValueError("Cannot find any test suite in xmind!")
 
     for node in suite_nodes:
@@ -70,7 +70,7 @@ def comments_of(node):
         node_id = node.attrib['id']
         comment = xml_root.find('./comment[@object-id="{}"]'.format(node_id))
 
-        if comment:
+        if comment is not None:
             return comment.find('content').text
 
 
@@ -81,14 +81,14 @@ def title_of(node):
 def note_of(topic_node):
     note_node = topic_node.find('notes')
 
-    if note_node:
+    if note_node is not None:
         note = note_node.find('plain').text
         return note.strip()
 
 
 def maker_of(topic_node, maker_prefix):
     maker_node = topic_node.find('marker-refs')
-    if maker_node:
+    if maker_node is not None:
         for maker in maker_node:
             maker_id = maker.attrib['marker-id']
             if maker_id.startswith(maker_prefix):
@@ -98,7 +98,7 @@ def maker_of(topic_node, maker_prefix):
 def children_topics_of(topic_node):
     children = topic_node.find('children')
 
-    if children:
+    if children is not None:
         return children.find('./topics[@type="attached"]')
 
 
@@ -107,7 +107,7 @@ def parse_step(step_node):
     step.action = title_of(step_node)
     expected_node = children_topics_of(step_node)
 
-    if expected_node:
+    if expected_node is not None:
         step.expected = title_of(children_topics_of(step_node)[0])
 
     return step
@@ -132,7 +132,7 @@ def parse_testcase(testcase_node):
     testcase.preconditions = comments_of(testcase_node)
     steps_node = children_topics_of(testcase_node)
 
-    if steps_node:
+    if steps_node is not None:
         testcase.steps = parse_steps(steps_node)
 
     return testcase
@@ -145,7 +145,7 @@ def parse_suite(suite_node):
     suite.testcase_list = []
     testcase_nodes = children_topics_of(suite_node)
 
-    if testcase_nodes:
+    if testcase_nodes is not None:
         for node in testcase_nodes:
             testcase = parse_testcase(node)
             suite.testcase_list.append(testcase)
