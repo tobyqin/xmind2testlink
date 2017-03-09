@@ -6,6 +6,7 @@ then you can import it into testlink as test suite and test cases. For more deta
 go to: https://github.com/tobyqin/xmind2testlink
 
 """
+from codecs import open
 from os import path
 
 from setuptools import setup, find_packages
@@ -38,7 +39,7 @@ def main():
         keywords="xmind testlink import converter testing testcase",
         long_description=long_description,
         classifiers=classifiers,
-        version="1.0.2",
+        version="1.0.5",
         author="Toby Qin",
         author_email="toby.qin@live.com",
         url="https://github.com/tobyqin/xmind2testlink",
