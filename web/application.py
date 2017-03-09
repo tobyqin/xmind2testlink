@@ -8,7 +8,7 @@ from flask import Flask, request, send_from_directory, g, render_template
 from flask import flash
 from werkzeug.utils import secure_filename
 
-from src.xmind2testlink import xmind_to_testlink
+from xmind2testlink.main import xmind_to_testlink
 
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = ['xmind']
