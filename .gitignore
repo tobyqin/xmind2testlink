@@ -91,5 +91,7 @@ uploads/
 
 # Rope project settings
 .ropeproject
-.sqlite3
-.db3
+
+# sqlite
+*.sqlite3
+*.db3
