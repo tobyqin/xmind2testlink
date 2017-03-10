@@ -48,7 +48,7 @@ def main():
         package_data={},
         install_requires=[],
         entry_points={"console_scripts": command_line(), },
-        zip_safe=False,
+        zip_safe=False
     )
 
 
