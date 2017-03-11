@@ -95,7 +95,7 @@ python application.py
 
 Start a browser, then you will be able to convert xmind to TestLink via http://127.0.0.1:5000. I am not good at web design, but I am trying my best to provide a friendly interface :-)
 
-![xmind2testlink_web](/Users/tobyqin/src/xmind2testlink/doc/xmind2testlink_web.png)
+![xmind2testlink_web](doc/xmind2testlink_web.png)
 
 If you wan to deploy this application to a web server, please checkout [Flask Deployment](http://flask.pocoo.org/docs/0.12/deploying/#deployment).
 
