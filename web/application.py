@@ -13,6 +13,7 @@ UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = ['xmind']
 DEBUG = True
 DATABASE = './data.db3'
+HOST = '0.0.0.0'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -152,4 +153,4 @@ if __name__ == '__main__':
     if not exists(DATABASE):
         init_db()
 
-    app.run(debug=True)
+    app.run(HOST, debug=DEBUG)
