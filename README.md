@@ -17,13 +17,13 @@ xmind2testlink /path/to/testcase.xmind
 Generated: testcase.xml
 ```
 
-To build another tool with this package, you can do it like this:
+To build your tools with this package, do it like this:
 
 ```python
 from xmind2testlink.xmind_parser import *
 from xmind2testlink.testlink_parser import *
 
-# do your work
+# do your stuff
 ```
 
 
@@ -43,7 +43,7 @@ Xmind is an excellent mindmap tool, which can help you design test cases easily.
 5. Sub topics for a test case will be treated as test steps.
    - It is okay to design test step **with action** but **without expected results**.
 6. Use `!` to ignore any test suite / test case / test step that you don't want to convert.
-7. The root topic will not be converted, please treat it as target suite node in TestLink.
+7. The root topic will not be converted, just treat it as target suite node in TestLink.
 8. Free topic and notes will not be converted.
 9. Only the mindmap in first sheet will be converted.
 
@@ -79,10 +79,13 @@ The field mapping looks like below figure.
 
 ## Advanced usage
 
+### 1. Use it from browser
+
 A simple webpage to host this feature also has been built in  `web` folder. To starting the website, here is the command:
 
 ```shell
-cd web
+# clone this git repo ahead
+cd /path/to/xmind2testlink/web
 pip install -r requirements.txt -U
 python application.py
 
@@ -90,4 +93,29 @@ python application.py
 * Restarting with stat
 ```
 
-Start a browser, then you will be able to convert xmind to TestLink via http://127.0.0.1:5000. I am not good at web design, but I am trying my best to provide a friendly interface :(-)
+Start a browser, then you will be able to convert xmind to TestLink via http://127.0.0.1:5000. I am not good at web design, but I am trying my best to provide a friendly interface :-)
+
+![xmind2testlink_web](/Users/tobyqin/src/xmind2testlink/doc/xmind2testlink_web.png)
+
+If you wan to deploy this application to a web server, please checkout [Flask Deployment](http://flask.pocoo.org/docs/0.12/deploying/#deployment).
+
+### 2. Batch convert on Windows
+
+It is okay to batch convert all xmind files in a folder, copy the `xmind2testlink.bat` to your folder, then you will be able to convert all files by doube clicking it.
+
+```shell
+@echo off
+echo start batch xmind to testlink...
+
+rem TODO
+
+:done
+echo OK!
+timeout /t 10
+exit /b 0
+
+:err
+echo something wrong, please check
+pause
+```
+

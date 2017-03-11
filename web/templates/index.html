@@ -4,8 +4,6 @@
         <div class="w3l_main_grid">
             <form method="post" action="/"
                   enctype="multipart/form-data" novalidate class="box">
-
-
                 <div class="box__input">
                     <svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="50" height="43"
                          viewBox="0 0 50 43">
@@ -20,10 +18,12 @@
                             <strong>Choose your xmind</strong>
                             <span class="box__dragndrop"> or drag it here.</span>
                         {% endif %}
+
                         {% if g.is_success %}
                             <span>Done!</span>
                             <strong class="box__dragndrop"> Upload more?</strong>
                         {% endif %}
+
                         {% if g.error %}
                             <span style="color: red">Error!</span>
                             <strong style="color: red" class="box__dragndrop"> {{ g.error }}</strong>
@@ -61,11 +61,15 @@
                 </tbody>
             </table>
 
-            </div>
         {% endif %}
-    {% if not records %}
-        <h2>Welcome!</h2>
-    {% endif %}
+        {% if not records %}
+            <h3>Welcome!</h3>
+            <p>Xmind2TestLink is a tool to help you convert xmind file to testlink xml file, and then
+                you will be able to import the xml into TestLink.
+                <a href="https://github.com/tobyqin/xmind2testlink">Learn more.</a></p>
+            <p>Are you ready? Upload your xmind file now.</p>
+        {% endif %}
+    </div>
     <div class="clear"></div>
 
 {% endblock %}
