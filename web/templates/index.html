@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div class="w3_main_grid_left">
-        <div class="w3l_main_grid">
+    <div class="main_grid_left">
+        <div class="main_grid">
             <form method="post" action="/"
                   enctype="multipart/form-data" novalidate class="box">
                 <div class="box__input">
@@ -38,10 +38,10 @@
         </div>
     </div>
 
-    <div class="w3_main_grid_right">
+    <div class="main_grid_right">
         {% if records %}
             <h3>Recent converted files</h3>
-            <table id="tb">
+            <table id="main_table">
                 <thead>
                 <tr>
                     <th>Name</th>
