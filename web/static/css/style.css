@@ -123,11 +123,11 @@ body a:hover, body a {
 }
 
 /*-- main --*/
-.agileits_copyright {
+.copyright {
     text-align: center;
 }
 
-.agileits_copyright p {
+.copyright p {
     font-size: 14px;
     color: #fff;
     margin: 3em 0 0;
@@ -136,17 +136,17 @@ body a:hover, body a {
     text-transform: capitalize;
 }
 
-.agileits_copyright p a {
+.copyright p a {
     color: #fff;
     text-decoration: underline;
 }
 
-.agileits_copyright p a:hover {
+.copyright p a:hover {
     color: #fff;
     text-decoration: none;
 }
 
-input[type="submit"], .agileits_copyright p a, input[type="reset"], .agileinfo_social li a {
+input[type="submit"], .copyright p a, input[type="reset"] {
     transition: .5s ease-in;
     -webkit-transition: .5s ease-in;
     -moz-transition: .5s ease-in;
@@ -683,7 +683,7 @@ input[type="submit"], .agileits_copyright p a, input[type="reset"], .agileinfo_s
         left: 0%;
     }
 
-    .agileits_copyright p {
+    .copyright p {
         margin: 2em 0 0;
     }
 }
@@ -770,7 +770,7 @@ input[type="submit"], .agileits_copyright p a, input[type="reset"], .agileinfo_s
         width: 100%;
     }
 
-    .w3_main_grid_right p, .agileits_copyright p {
+    .w3_main_grid_right p, .copyright p {
         font-size: 13px;
     }
 }
