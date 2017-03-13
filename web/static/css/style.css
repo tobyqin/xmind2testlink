@@ -105,11 +105,12 @@ img {
 html, body {
     font-size: 100%;
     background: #0f6d84;
-    font-family: 'Nunito', sans-serif;
+    font-family: Tahoma, Geneva, sans-serif;
+    text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.9);
 }
 
 h1, h2, h3, h4, h5, h6, input, p, a, select {
-    font-family: 'Nunito', sans-serif;
+    font-family: Verdana, Geneva, sans-serif;
     margin: 0;
 }
 
