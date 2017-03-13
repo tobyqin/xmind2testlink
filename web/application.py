@@ -51,6 +51,27 @@ def insert_record(xmind_name, note=''):
     g.db.commit()
 
 
+def delete_records(keep=20):
+    """Clean up files on server and mark the record as deleted"""
+    sql = "SELECT * from records ORDER BY id desc LIMIT -1 offset {}".format(keep)
+    assert isinstance(g.db, sqlite3.Connection)
+    c = g.db.cursor()
+    c.execute(sql)
+    rows = c.fetchall()
+    for row in rows:
+        name = row[1]
+        xmind = join(app.config['UPLOAD_FOLDER'], name)
+        xml = join(app.config['UPLOAD_FOLDER'], name[:-5] + 'xml')
+
+        for f in [xmind, xml]:
+            if exists(f):
+                os.remove(f)
+
+        sql = 'update records set is_deleted=1 where name = ?'
+        c.execute(sql, (name,))
+        g.db.commit()
+
+
 def get_latest_record():
     found = list(get_records(1))
     if found:
@@ -60,7 +81,7 @@ def get_latest_record():
 def get_records(limit=5):
     short_name_length = 20
     c = g.db.cursor()
-    sql = "select * from records where is_deleted is not null order by id desc limit {}".format(int(limit))
+    sql = "select * from records where is_deleted<>1 order by id desc limit {}".format(int(limit))
     c.execute(sql)
     rows = c.fetchall()
 
@@ -120,6 +141,8 @@ def index(download_xml=None):
 
         if g.invalid_files:
             g.error = "Invalid file: {}".format(','.join(g.invalid_files))
+
+        delete_records()
 
     else:
         g.upload_form = True
