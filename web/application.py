@@ -31,6 +31,14 @@ def init_db():
         db.commit()
 
 
+def init():
+    if not exists(UPLOAD_FOLDER):
+        os.mkdir(UPLOAD_FOLDER)
+
+    if not exists(DATABASE):
+        init_db()
+
+
 @app.before_request
 def before_request():
     g.db = connect_db()
@@ -168,12 +176,7 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
+init()
+
 if __name__ == '__main__':
-
-    if not exists(UPLOAD_FOLDER):
-        os.mkdir(UPLOAD_FOLDER)
-
-    if not exists(DATABASE):
-        init_db()
-
     app.run(HOST, debug=DEBUG)
