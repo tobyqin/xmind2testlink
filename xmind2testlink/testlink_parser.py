@@ -2,6 +2,7 @@
 Module to parse test suite objects into testlink xml.
 """
 import os
+from codecs import open
 from io import BytesIO
 from os.path import exists
 from xml.dom import minidom
@@ -37,7 +38,7 @@ def to_testlink_xml_file(testsuite, path_to_xml):
     if exists(path_to_xml):
         os.remove(path_to_xml)
 
-    with open(path_to_xml, 'w') as f:
+    with open(path_to_xml, 'w', encoding='utf-8') as f:
         f.write(prettify_xml(content))
 
 

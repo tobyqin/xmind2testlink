@@ -18,10 +18,10 @@ def parse_xmind_file(file_path):
     with ZipFile(file_path) as xmind:
         for f in xmind.namelist():
             if f == content_xml:
-                cache[content_xml] = xmind.open(f).read().decode()
+                cache[content_xml] = xmind.open(f).read().decode('utf-8')
 
             if f == comments_xml:
-                cache[comments_xml] = xmind.open(f).read().decode()
+                cache[comments_xml] = xmind.open(f).read().decode('utf-8')
 
     return parse_xmind_content()
 
@@ -55,7 +55,7 @@ def parse_xmind_content():
 def xmind_content_to_etree(content):
     # Remove the default namespace definition (xmlns="http://some/namespace")
     xml_content = re.sub(r'\sxmlns="[^"]+"', '', content, count=1)
-    return ET.fromstring(xml_content)
+    return ET.fromstring(xml_content.encode('utf-8'))
 
 
 def xmind_xml_to_etree(xml_path):
