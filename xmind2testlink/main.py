@@ -13,9 +13,9 @@ Example:
 
 import sys
 
-from .datatype import cache
-from .testlink_parser import to_testlink_xml_file, to_testlink_xml_content
-from .xmind_parser import parse_xmind_file
+from xmind2testlink.datatype import cache
+from xmind2testlink.testlink_parser import to_testlink_xml_file, to_testlink_xml_content
+from xmind2testlink.xmind_parser import parse_xmind_file
 
 
 def xmind_to_testlink(xmind):

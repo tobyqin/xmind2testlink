@@ -75,7 +75,10 @@ def comments_of(node):
 
 
 def title_of(node):
-    return node.find('title').text
+    title = node.find('title')
+
+    if title is not None:
+        return title.text
 
 
 def note_of(topic_node):
@@ -108,7 +111,7 @@ def parse_step(step_node):
     expected_node = children_topics_of(step_node)
 
     if expected_node is not None:
-        step.expected = title_of(children_topics_of(step_node)[0])
+        step.expected = title_of(expected_node[0])
 
     return step
 
