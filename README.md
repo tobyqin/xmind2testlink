@@ -2,6 +2,8 @@
 
 With this tool, you will be able to convert [xmind](https://www.xmind.net/) tests to [testlink](http://www.testlink.org/) tests xml files. You should have python installed before running it.
 
+**Requirement:** python 2.7 or 3.x
+
 ## Installation and quick start
 
 The most easy to install xmind2testlink is using pip command:
@@ -101,7 +103,7 @@ If you wan to deploy this application to a web server, please checkout [Flask De
 
 ### 2. Batch convert on Windows
 
-It is okay to batch convert all xmind files in a folder, copy the [`xmind2testlink_all.bat`](batch/xmind2testlink.bat) to your folder, then you will be able to convert all files by double clicking it.
+It is okay to batch convert all xmind files in a folder, copy the [`xmind2testlink_all.bat`](batch/xmind2testlink_all.bat) to your folder, then you will be able to convert all files by double clicking on it.
 
 ```shell
 @echo off
