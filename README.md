@@ -101,21 +101,14 @@ If you wan to deploy this application to a web server, please checkout [Flask De
 
 ### 2. Batch convert on Windows
 
-It is okay to batch convert all xmind files in a folder, copy the `xmind2testlink.bat` to your folder, then you will be able to convert all files by doube clicking it.
+It is okay to batch convert all xmind files in a folder, copy the [`xmind2testlink_all.bat`](batch/xmind2testlink.bat) to your folder, then you will be able to convert all files by double clicking it.
 
 ```shell
 @echo off
 echo start batch xmind to testlink...
 
-rem TODO
+python -c "import glob, os;[os.system('xmind2testlink ""{}""'.format(f)) for f in glob.glob('*.xmind')]"
 
-:done
 echo OK!
-timeout /t 10
-exit /b 0
-
-:err
-echo something wrong, please check
-pause
 ```
 
