@@ -1,6 +1,6 @@
 Change Log
 ----------
-1.1.2
+1.1.4
 
 Fix potential failure if test action node is empty.
 

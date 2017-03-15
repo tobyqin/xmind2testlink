@@ -57,7 +57,7 @@ def to_testlink_xml_content(testsuite):
     cache['testcase_count'] = 0
 
     def should_skip(item):
-        return item is not None or not isinstance(item, str) or item.startswith('!')
+        return item is None or not isinstance(item, str) or item.strip() == '' or item.startswith('!')
 
     def should_parse(item):
         return isinstance(item, str) and not item.startswith('!')
