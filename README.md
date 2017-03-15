@@ -105,8 +105,10 @@ It is okay to batch convert all xmind files in a folder, copy the [`xmind2testli
 
 ```shell
 @echo off
-echo start batch xmind to testlink...
+@echo off
+echo Batch xmind to testlink...
 
+python -m pip install xmind2testlink -U >NUL
 python -c "import glob, os;[os.system('xmind2testlink ""{}""'.format(f)) for f in glob.glob('*.xmind')]"
 
 echo OK!
