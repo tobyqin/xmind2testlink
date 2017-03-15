@@ -40,7 +40,7 @@ def main():
         keywords="xmind testlink import converter testing testcase",
         long_description=long_description,
         classifiers=classifiers,
-        version="1.1.1",
+        version="1.1.2",
         author="Toby Qin",
         author_email="toby.qin@live.com",
         url="https://github.com/tobyqin/xmind2testlink",

@@ -1,5 +1,9 @@
 Change Log
 ----------
+1.1.2
+
+Fix potential failure if test action node is empty.
+
 1.1.1
 
 Fix potential failure if the node is a image.

@@ -56,38 +56,44 @@ def to_testlink_xml_content(testsuite):
     root_suite.set(Attributes.name, testsuite.name)
     cache['testcase_count'] = 0
 
+    def should_skip(item):
+        return item is not None or not isinstance(item, str) or item.startswith('!')
+
+    def should_parse(item):
+        return isinstance(item, str) and not item.startswith('!')
+
     for suite in testsuite.sub_suites:
         assert isinstance(suite, TestSuite)
 
-        if suite.name.startswith('!'):
+        if should_skip(suite.name):
             continue
 
         suite_element = SubElement(root_suite, Tags.testsuite)
         suite_element.set(Attributes.name, suite.name)
 
-        if suite.details and not suite.details.startswith('!'):
+        if should_parse(suite.details):
             e = SubElement(suite_element, Tags.details)
             e.text = suite.details
 
         for testcase in suite.testcase_list:
             assert isinstance(testcase, TestCase)
 
-            if testcase.name.startswith('!'):
+            if should_skip(testcase.name):
                 continue
 
             cache['testcase_count'] += 1
             testcase_element = SubElement(suite_element, Tags.testcase)
             testcase_element.set(Attributes.name, testcase.name)
 
-            if testcase.summary and not testcase.summary.startswith('!'):
+            if should_parse(testcase.summary):
                 e = SubElement(testcase_element, Tags.summary)
                 e.text = testcase.summary
 
-            if testcase.preconditions and not testcase.preconditions.startswith('!'):
+            if should_parse(testcase.preconditions):
                 e = SubElement(testcase_element, Tags.precoditions)
                 e.text = testcase.preconditions
 
-            if testcase.execution_type:
+            if should_parse(testcase.execution_type):
                 e = SubElement(testcase_element, Tags.execution_type)
                 e.text = testcase.execution_type
 
@@ -100,20 +106,20 @@ def to_testlink_xml_content(testsuite):
                 for step in testcase.steps:
                     assert isinstance(step, TestStep)
 
-                    if step.action.startswith('!'):
+                    if should_skip(step.action):
                         continue
                     else:
                         step_element = SubElement(steps_element, Tags.step)
 
-                    if step.action and not step.action.startswith('!'):
+                    if should_parse(step.action):
                         e = SubElement(step_element, Tags.actions)
                         e.text = step.action
 
-                    if step.expected and not step.expected.startswith('!'):
+                    if should_parse(step.expected):
                         e = SubElement(step_element, Tags.expected)
                         e.text = step.expected
 
-                    if step.execution_type:
+                    if should_parse(step.execution_type):
                         e = SubElement(step_element, Tags.execution_type)
                         e.text = step.execution_type
 
