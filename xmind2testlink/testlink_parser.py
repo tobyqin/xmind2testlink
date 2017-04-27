@@ -7,7 +7,8 @@ from io import BytesIO
 from os.path import exists
 from xml.dom import minidom
 from xml.etree import ElementTree
-from xml.etree.ElementTree import Element, SubElement
+from xml.etree.ElementTree import Element, SubElement, Comment
+from xml.sax.saxutils import escape
 
 from .datatype import *
 
@@ -73,7 +74,7 @@ def to_testlink_xml_content(testsuite):
 
         if should_parse(suite.details):
             e = SubElement(suite_element, Tags.details)
-            e.text = suite.details
+            set_text(e, suite.details)
 
         for testcase in suite.testcase_list:
             assert isinstance(testcase, TestCase)
@@ -87,11 +88,11 @@ def to_testlink_xml_content(testsuite):
 
             if should_parse(testcase.summary):
                 e = SubElement(testcase_element, Tags.summary)
-                e.text = testcase.summary
+                set_text(e, testcase.summary)
 
             if should_parse(testcase.preconditions):
                 e = SubElement(testcase_element, Tags.precoditions)
-                e.text = testcase.preconditions
+                set_text(e, testcase.preconditions)
 
             if should_parse(testcase.execution_type):
                 e = SubElement(testcase_element, Tags.execution_type)
@@ -113,11 +114,11 @@ def to_testlink_xml_content(testsuite):
 
                     if should_parse(step.action):
                         e = SubElement(step_element, Tags.actions)
-                        e.text = step.action
+                        set_text(e, step.action)
 
                     if should_parse(step.expected):
                         e = SubElement(step_element, Tags.expected)
-                        e.text = step.expected
+                        set_text(e, step.expected)
 
                     if should_parse(step.execution_type):
                         e = SubElement(step_element, Tags.execution_type)
@@ -130,6 +131,15 @@ def to_testlink_xml_content(testsuite):
     f = BytesIO()
     tree.write(f, encoding='utf-8', xml_declaration=True)
     return f.getvalue()
+
+
+def set_text(element, content):
+    content = escape(content, entities={'\r\n': '<br />'})  # retain html tags in text
+    content = content.replace("\n", "<br />")  # replace new line for *nix system
+    content = content.replace("<br />", "<br />\n")  # add the line break in source to make it readable
+
+    # trick to add CDATA for element tree lib
+    element.append(Comment(' --><![CDATA[' + content.replace(']]>', ']]]]><![CDATA[>') + ']]><!-- '))
 
 
 def prettify_xml(xml_string):
