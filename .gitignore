@@ -95,3 +95,5 @@ uploads/
 # sqlite
 *.sqlite3
 *.db3
+
+.DS_Store

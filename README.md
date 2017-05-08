@@ -1,5 +1,7 @@
 # xmind2testlink
 
+[![PyPI](https://img.shields.io/pypi/v/xmind2testlink.svg)](https://pypi.python.org/pypi/xmind2testlink)
+
 With this tool, you will be able to convert [xmind](https://www.xmind.net/) tests to [testlink](http://www.testlink.org/) tests xml files. You should have python installed before running it.
 
 **Requirement:** python 2.7 or 3.x
