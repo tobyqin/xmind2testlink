@@ -54,7 +54,7 @@ def teardown_request(exception):
 def insert_record(xmind_name, note=''):
     c = g.db.cursor()
     now = str(arrow.now())
-    sql = "insert into records (name,create_on,note) VALUES (?,?,?)"
+    sql = "INSERT INTO records (name,create_on,note) VALUES (?,?,?)"
     c.execute(sql, (xmind_name, now, str(note)))
     g.db.commit()
 
@@ -75,7 +75,7 @@ def delete_records(keep=20):
             if exists(f):
                 os.remove(f)
 
-        sql = 'update records set is_deleted=1 where name = ?'
+        sql = 'UPDATE records SET is_deleted=1 WHERE name = ?'
         c.execute(sql, (name,))
         g.db.commit()
 
@@ -132,10 +132,20 @@ def save_file(file):
         g.invalid_files.append(file.filename)
 
 
+def verify_uploaded_files(files):
+    # download the xml directly if only 1 file uploaded
+    if len(files) == 1 and getattr(g, 'is_success', False):
+        g.download_xml = get_latest_record()[1]
+
+    if g.invalid_files:
+        g.error = "Invalid file: {}".format(','.join(g.invalid_files))
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index(download_xml=None):
     g.invalid_files = []
     g.error = None
+    g.download_xml = download_xml
 
     if request.method == 'POST':
         files = request.files.getlist('files[]')
@@ -143,19 +153,13 @@ def index(download_xml=None):
         for file in files:
             save_file(file)
 
-        # download the xml directly if only 1 file uploaded
-        if len(files) == 1 and getattr(g, 'is_success', False):
-            download_xml = get_latest_record()[1]
-
-        if g.invalid_files:
-            g.error = "Invalid file: {}".format(','.join(g.invalid_files))
-
+        verify_uploaded_files(files)
         delete_records()
 
     else:
         g.upload_form = True
 
-    return render_template('index.html', download_xml=download_xml, records=list(get_records()))
+    return render_template('index.html', download_xml=g.download_xml, records=list(get_records()))
 
 
 @app.route('/<filename>/to/testlink')
