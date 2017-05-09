@@ -73,11 +73,7 @@ def to_testlink_xml_content(testsuite):
 
         suite_element = SubElement(root_suite, Tags.testsuite)
         suite_element.set(Attributes.name, suite.name)
-
-        if should_parse(suite.details):
-            e = SubElement(suite_element, Tags.details)
-            set_text(e, suite.details)
-
+        build_text_field(suite_element, Tags.details, suite.details)
         build_testcase_xml(suite, suite_element)
 
     tree = ElementTree.ElementTree(root_suite)
