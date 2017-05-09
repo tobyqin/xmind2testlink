@@ -17,11 +17,9 @@ def parse_xmind_file(file_path):
     """Extract xmind as zip file then read the content.xml"""
     with ZipFile(file_path) as xmind:
         for f in xmind.namelist():
-            if f == content_xml:
-                cache[content_xml] = xmind.open(f).read().decode('utf-8')
-
-            if f == comments_xml:
-                cache[comments_xml] = xmind.open(f).read().decode('utf-8')
+            for key in [content_xml, comments_xml]:
+                if f == key:
+                    cache[key] = xmind.open(f).read().decode('utf-8')
 
     return parse_xmind_content()
 
