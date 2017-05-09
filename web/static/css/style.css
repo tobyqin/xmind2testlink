@@ -14,8 +14,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 ol, ul {
     list-style: none;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 blockquote, q {
@@ -197,7 +197,7 @@ input[type="submit"], .copyright p a, input[type="reset"] {
     color: #0f6d84;
     text-align: right;
     font-weight: bold;
-    text-shadow: 0px 5px 1px #514F4F;
+    text-shadow: 0 5px 1px #514F4F;
     position: relative;
 }
 
@@ -236,7 +236,7 @@ input[type="submit"], .copyright p a, input[type="reset"] {
 .main_grid_right p {
     color: #999;
     line-height: 2em;
-    margin: 1em 2em 1em 0em;
+    margin: 1em 2em 1em 0;
     font-size: 14px;
     font-family: 'Open Sans', sans-serif;
 }
@@ -637,7 +637,7 @@ input[type="submit"], .copyright p a, input[type="reset"] {
     }
 
     .main_grid_left h2:before {
-        left: 0%;
+        left: 0;
     }
 
     .copyright p {
