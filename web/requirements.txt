@@ -1,3 +1,3 @@
 flask==0.12.2
-xmind2testlink
+xmind2testlink==1.1.7
 arrow
