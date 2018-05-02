@@ -4,7 +4,10 @@
 
 With this tool, you will be able to convert [xmind](https://www.xmind.net/) tests to [testlink](http://www.testlink.org/) tests xml files. You should have python installed before running it.
 
-**Requirement:** python 2.7 or 3.x
+**Requirement:** 
+
+python 2.7 or 3.4 +
+如果你的xmind中包含中文或者unicode，请使用Python 3.4+，谢谢。
 
 ## Installation and quick start
 
