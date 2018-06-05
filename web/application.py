@@ -61,7 +61,7 @@ def insert_record(xmind_name, note=''):
 
 def delete_records(keep=20):
     """Clean up files on server and mark the record as deleted"""
-    sql = "SELECT * from records ORDER BY id desc LIMIT -1 offset {}".format(keep)
+    sql = "SELECT * from records where is_deleted<>1 ORDER BY id desc LIMIT -1 offset {}".format(keep)
     assert isinstance(g.db, sqlite3.Connection)
     c = g.db.cursor()
     c.execute(sql)
@@ -75,8 +75,8 @@ def delete_records(keep=20):
             if exists(f):
                 os.remove(f)
 
-        sql = 'UPDATE records SET is_deleted=1 WHERE name = ?'
-        c.execute(sql, (name,))
+        sql = 'UPDATE records SET is_deleted=1 WHERE id = ?'
+        c.execute(sql, (row[0],))
         g.db.commit()
 
 
