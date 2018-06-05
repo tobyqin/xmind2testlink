@@ -2,6 +2,8 @@
 
 [![PyPI](https://img.shields.io/pypi/v/xmind2testlink.svg)](https://pypi.python.org/pypi/xmind2testlink) [![Code Climate](https://img.shields.io/codeclimate/github/tobyqin/xmind2testlink.svg)](https://codeclimate.com/github/tobyqin/xmind2testlink)
 
+中文介绍：[xmind2testlink - 快速设计测试案例并导入TestLink](https://tobyqin.github.io/posts/2017-07-27/use-xmind-to-design-testcase/)
+
 With this tool, you will be able to convert [xmind](https://www.xmind.net/) tests to [testlink](http://www.testlink.org/) tests xml files. You should have python installed before running it.
 
 **Requirement:** python 2.7 or 3.x
