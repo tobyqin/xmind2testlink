@@ -39,18 +39,25 @@ def is_testcase_node(node):
     return True
 
 
+def _filter_empty_value(values):
+    return [v for v in values if v]
+
+
 def build_testcase_title(nodes):
     values = [title_of(n) for n in nodes]
+    values = _filter_empty_value(values)
     return config['sep'].join(values)
 
 
 def build_testcase_precondition(nodes):
     values = [comments_of(n) for n in nodes]
+    values = _filter_empty_value(values)
     return config['precondition_sep'].join(values)
 
 
 def build_testcase_summary(nodes):
     values = [note_of(n) for n in nodes]
+    values = _filter_empty_value(values)
     return config['summary_sep'].join(values)
 
 
@@ -79,8 +86,9 @@ def parse_xmind_content():
         raise
 
     root_suite = TestSuite()
+    root_suite.name = title_of(xml_root_suite)
     root_suite.sub_suites = []
-    suite_nodes = children_topics_of(xml_root_suite)
+    suite_nodes = children_topics_of(xml_root_suite, is_root_node=True)
 
     if suite_nodes is None:
         raise ValueError("Cannot find any test suite in xmind!")
@@ -106,16 +114,25 @@ def xmind_xml_to_etree(xml_path):
 
 def comments_of(node):
     if cache.get(comments_xml, None):
-        xml_root = xmind_content_to_etree(cache[comments_xml])
-        node_id = node.attrib['id']
-        comment = xml_root.find('./comment[@object-id="{}"]'.format(node_id))
+        node_id = node.attrib.get('id', None)
 
-        if comment is not None:
-            return comment.find('content').text
+        if node_id:
+            xml_root = xmind_content_to_etree(cache[comments_xml])
+            comment = xml_root.find('./comment[@object-id="{}"]'.format(node_id))
+
+            if comment is not None:
+                return comment.find('content').text
 
 
 def title_of(node):
     title = node.find('title')
+
+    if title is not None:
+        return title.text
+
+
+def id_of(node):
+    title = node.find('id')
 
     if title is not None:
         return title.text
@@ -129,6 +146,9 @@ def note_of(topic_node):
         return note.strip()
 
 
+def debug_node(node):
+    return ET.tostring(node)
+
 def maker_of(topic_node, maker_prefix):
     maker_node = topic_node.find('marker-refs')
     if maker_node is not None:
@@ -138,10 +158,18 @@ def maker_of(topic_node, maker_prefix):
                 return maker_id
 
 
-def children_topics_of(topic_node):
+def children_topics_of(topic_node, is_root_node=False):
     children = topic_node.find('children')
 
     if children is not None:
+        # root node title is always empty
+        # if not is_root_node:
+
+        # # when topic title is empty or starts with "!" will be ignored
+        # title = title_of(children)
+        # if not title or title.startswith('!'):
+        #     return None
+
         return children.find('./topics[@type="attached"]')
 
 
@@ -167,18 +195,36 @@ def parse_steps(steps_node):
     return steps
 
 
-def parse_testcase(testcase_node):
+def parse_testcase(testcase_node, parent=None):
     testcase = TestCase()
-    testcase.name = title_of(testcase_node)
-    testcase.summary = note_of(testcase_node)
+
+    if parent:
+        parent.append(testcase_node)
+    else:
+        parent = [testcase_node]
+
+    testcase.name = build_testcase_title(parent)
+    testcase.summary = build_testcase_summary(parent)
     testcase.importance = maker_of(testcase_node, 'priority')
-    testcase.preconditions = comments_of(testcase_node)
+    testcase.preconditions = build_testcase_precondition(parent)
     steps_node = children_topics_of(testcase_node)
 
     if steps_node is not None:
         testcase.steps = parse_steps(steps_node)
 
     return testcase
+
+
+def parse_testcase_list(node, parent=None):
+    if is_testcase_node(node):
+        yield parse_testcase(node, parent)
+
+    else:
+        if not parent:
+            parent = []
+
+        parent.append(node)
+        return parse_testcase_list(children_topics_of(node), parent)
 
 
 def parse_suite(suite_node):
@@ -190,7 +236,7 @@ def parse_suite(suite_node):
 
     if testcase_nodes is not None:
         for node in testcase_nodes:
-            testcase = parse_testcase(node)
-            suite.testcase_list.append(testcase)
+            for t in parse_testcase_list(node):
+                suite.testcase_list.append(t)
 
     return suite
