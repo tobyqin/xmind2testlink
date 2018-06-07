@@ -15,22 +15,80 @@ content_xml = "content.xml"
 comments_xml = "comments.xml"
 
 
-def is_v2_format(root_node):
-    if maker_of(root_node, maker_prefix='star'):
-        last_char = title_of(root_node)[-1:]
-        if last_char in config['valid_sep']:
-            config['sep'] = last_char
+def open_xmind(file_path):
+    """open xmind as zip file and cache the content."""
+    with ZipFile(file_path) as xmind:
+        for f in xmind.namelist():
+            for key in [content_xml, comments_xml]:
+                if f == key:
+                    cache[key] = xmind.open(f).read().decode('utf-8')
 
-        return True
+
+def check_xmind():
+    """check xmind contains valid topics and return root topic node."""
+    tree = xmind_content_to_etree(cache[content_xml])
+    assert isinstance(tree, Element)
+
+    try:
+        root_topic_node = tree.find('sheet').find('topic')
+        logging.info("Parse topic: {}".format(title_of(root_topic_node)))
+    except:
+        logging.error('Cannot find any topic in your xmind!')
+        raise
+
+    return root_topic_node
 
 
-def is_testcase_node(node):
-    priority = maker_of(node, 'priority')
+def xmind_to_dict(file_path):
+    """Open and convert xmind to dict type."""
+    open_xmind(file_path)
+    root = check_xmind()
+    return _node_to_dict(root)
+
+
+def _node_to_dict(node):
+    """parse Element to dict data type."""
+    title = title_of(node)
+    comment = comments_of(node)
+    note = note_of(node)
+    makers = maker_of(node)
+    child = children_topics_of(node)
+    d = {'title': title, 'comment': comment, 'note': note, 'makers': makers}
+    if child:
+        d['topics'] = []
+        for c in child:
+            d['topics'].append(_node_to_dict(c))
+
+    return d
+
+
+def is_v2_format(d):
+    """v2 xmind root dict will have a star maker, and sep is this last char of title."""
+    if isinstance(d['makers'], list):
+        for m in d['makers']:
+            if m.startswith('star'):
+
+                last_char = title_of(d['title'])[-1:]
+                if last_char in config['valid_sep']:
+                    config['sep'] = last_char
+
+                return True
+
+
+def get_priority(d):
+    if isinstance(d['makers'], list):
+        for m in d['makers']:
+            if m.startswith('priority'):
+                return m
+
+
+def is_testcase_topic(d):
+    priority = get_priority(d)
 
     if priority:
         return True
 
-    child_node = children_topics_of(node)
+    child_node = d.get('topics', [])
 
     if child_node:
         return False
@@ -63,32 +121,17 @@ def build_testcase_summary(nodes):
 
 def parse_xmind_file(file_path):
     """Extract xmind as zip file then read the content.xml"""
-    with ZipFile(file_path) as xmind:
-        for f in xmind.namelist():
-            for key in [content_xml, comments_xml]:
-                if f == key:
-                    cache[key] = xmind.open(f).read().decode('utf-8')
-
-    return parse_xmind_content()
+    d = xmind_to_dict(file_path)
+    return parse_xmind_content(d)
 
 
-def parse_xmind_content():
+def parse_xmind_content(d):
     """Main function to read the content xml and return test suite data."""
-    xml_root = xmind_content_to_etree(cache[content_xml])
-    assert isinstance(xml_root, Element)
-
-    try:
-        xml_root_suite = xml_root.find('sheet').find('topic')
-        assert is_v2_format(xml_root_suite), 'Not a V2 xmind file!'
-        logging.info("Parse topic: {}".format(title_of(xml_root_suite)))
-    except:
-        logging.error('Cannot find any topic in your xmind!')
-        raise
 
     root_suite = TestSuite()
-    root_suite.name = title_of(xml_root_suite)
+    root_suite.name = d['title']
     root_suite.sub_suites = []
-    suite_nodes = children_topics_of(xml_root_suite, is_root_node=True)
+    suite_nodes = d['topics']
 
     if suite_nodes is None:
         raise ValueError("Cannot find any test suite in xmind!")
@@ -131,13 +174,6 @@ def title_of(node):
         return title.text
 
 
-def id_of(node):
-    title = node.find('id')
-
-    if title is not None:
-        return title.text
-
-
 def note_of(topic_node):
     note_node = topic_node.find('notes')
 
@@ -149,13 +185,20 @@ def note_of(topic_node):
 def debug_node(node):
     return ET.tostring(node)
 
-def maker_of(topic_node, maker_prefix):
+
+def maker_of(topic_node, maker_prefix=None):
     maker_node = topic_node.find('marker-refs')
     if maker_node is not None:
+        makers = []
         for maker in maker_node:
-            maker_id = maker.attrib['marker-id']
-            if maker_id.startswith(maker_prefix):
-                return maker_id
+            makers.append(maker.attrib['marker-id'])
+
+        if maker_prefix:
+            for m in makers:
+                if m.startswith(maker_prefix):
+                    return m
+        else:
+            return makers
 
 
 def children_topics_of(topic_node, is_root_node=False):
@@ -175,11 +218,11 @@ def children_topics_of(topic_node, is_root_node=False):
 
 def parse_step(step_node):
     step = TestStep()
-    step.action = title_of(step_node)
-    expected_node = children_topics_of(step_node)
+    step.action = step_node['title']
+    expected_node = step_node.get('topics', None)
 
     if expected_node is not None:
-        step.expected = title_of(expected_node[0])
+        step.expected = expected_node[0]['title']
 
     return step
 
@@ -198,16 +241,16 @@ def parse_steps(steps_node):
 def parse_testcase(testcase_node, parent=None):
     testcase = TestCase()
 
-    if parent:
-        parent.append(testcase_node)
-    else:
-        parent = [testcase_node]
+    # if parent:
+    #     parent.append(testcase_node)
+    # else:
+    #     parent = [testcase_node]
 
-    testcase.name = build_testcase_title(parent)
-    testcase.summary = build_testcase_summary(parent)
-    testcase.importance = maker_of(testcase_node, 'priority')
-    testcase.preconditions = build_testcase_precondition(parent)
-    steps_node = children_topics_of(testcase_node)
+    testcase.name = testcase_node['title']
+    testcase.summary = testcase_node['note']
+    testcase.importance = get_priority(testcase_node)
+    testcase.preconditions = testcase_node['comment']
+    steps_node = testcase_node.get('topics', None)
 
     if steps_node is not None:
         testcase.steps = parse_steps(steps_node)
@@ -216,7 +259,7 @@ def parse_testcase(testcase_node, parent=None):
 
 
 def parse_testcase_list(node, parent=None):
-    if is_testcase_node(node):
+    if is_testcase_topic(node):
         yield parse_testcase(node, parent)
 
     else:
@@ -224,19 +267,20 @@ def parse_testcase_list(node, parent=None):
             parent = []
 
         parent.append(node)
-        return parse_testcase_list(children_topics_of(node), parent)
+        topics = node['topics'] or []
+        for child in topics:
+            yield from parse_testcase_list(child, parent)
 
 
-def parse_suite(suite_node):
+def parse_suite(d):
     suite = TestSuite()
-    suite.name = title_of(suite_node)
-    suite.details = note_of(suite_node)
+    suite.name = d['title']
+    suite.details = d['note']
     suite.testcase_list = []
-    testcase_nodes = children_topics_of(suite_node)
+    testcase_topics = d.get('topics', [])
 
-    if testcase_nodes is not None:
-        for node in testcase_nodes:
-            for t in parse_testcase_list(node):
-                suite.testcase_list.append(t)
+    for node in testcase_topics:
+        for t in parse_testcase_list(node):
+            suite.testcase_list.append(t)
 
     return suite

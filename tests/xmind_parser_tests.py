@@ -87,3 +87,8 @@ def test_parse_xmind_v1():
 def test_parse_xmind_v2():
     test_suite = v2.parse_xmind_file(xmind_v2_file)
     print(dumps(test_suite.to_dict(), indent=2))
+
+
+def test_xmind_to_dict():
+    d = v2.xmind_to_dict(xmind_v2_file)
+    print(dumps(d, indent=2))
