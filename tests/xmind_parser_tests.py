@@ -4,7 +4,8 @@ from xmind2testlink.xmind_parser import *
 
 xml_dir = dirname(__file__)
 root_node = xmind_xml_to_etree(join(xml_dir, content_xml))
-xmind_file = join(xml_dir, 'tests.xmind')
+xmind_v1_file = join(xml_dir, 'Test cases by xmind v1.xmind')
+xmind_v2_file = join(xml_dir, 'Test cases by xmind v2.xmind')
 
 with open(join(xml_dir, content_xml)) as f:
     cache[content_xml] = f.read()
@@ -74,7 +75,7 @@ def test_parse_xmind_content():
 
 
 def test_parse_xmind():
-    test_suite = parse_xmind_file(xmind_file)
+    test_suite = parse_xmind_file(xmind_v1_file)
     assert test_suite.name == ""
     assert len(test_suite.sub_suites) == 5
     assert test_suite.sub_suites[0].name == "demo suite"
