@@ -2,13 +2,7 @@
 V2 module to parse xmind file into test suite and test case objects.
 """
 
-from .datatype import *
 from .sharedparser import *
-
-_config = {'sep': ' ',
-           'valid_sep': '/>-+',
-           'precondition_sep': '\n----\n',
-           'summary_sep': '\n----\n'}
 
 
 def xmind_to_suite(xmind_file):

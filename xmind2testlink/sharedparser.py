@@ -1,3 +1,11 @@
+from .datatype import *
+
+_config = {'sep': ' ',
+           'valid_sep': '/>-+',
+           'precondition_sep': '\n----\n',
+           'summary_sep': '\n----\n'}
+
+
 def xmind_to_dict(file_path):
     """Open and convert xmind to dict type."""
     from .xreader import open_xmind, get_sheets, sheet_to_dict
