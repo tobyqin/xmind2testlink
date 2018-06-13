@@ -1,0 +1,4 @@
+UPDATE ET_Main.dbo.MemberSiteSetting
+SET KeyCode = '{"StatusCode":"CRMakeUp","LastOSAStartUTCTime":"2018-06-14T00:00:00-04:00"}'
+WHERE Member_id = 23951577
+AND KeyCode = 'EC.OSA.StatusInfo'
