@@ -1,8 +1,12 @@
+import logging
 from json import dumps
 from os.path import join, dirname
 
 import xmind2testlink.xmind_parser as v1
 import xmind2testlink.xmind_parser_v2 as v2
+from xmind2testlink.xreader import set_logger_level
+
+set_logger_level(logging.DEBUG)
 
 xml_dir = dirname(__file__)
 root_node = v1.xmind_xml_to_etree(join(xml_dir, v1.content_xml))
@@ -85,8 +89,14 @@ def test_parse_xmind_v1():
 
 
 def test_parse_xmind_v2():
-    test_suite = v2.parse_xmind_file(xmind_v2_file)
+    test_suite = v2.xmind_to_suite(xmind_v2_file)
     print(dumps(test_suite.to_dict(), indent=2))
+
+
+def test_flat_suite():
+    test_suite = v2.xmind_to_suite(xmind_v2_file)
+    out = v2.flat_suite(test_suite)
+    print(dumps(out, indent=2))
 
 
 def test_xmind_to_dict():
