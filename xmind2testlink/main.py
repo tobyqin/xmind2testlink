@@ -15,18 +15,18 @@ import sys
 
 from xmind2testlink.datatype import cache
 from xmind2testlink.testlink_parser import to_testlink_xml_file, to_testlink_xml_content
-from xmind2testlink.xmind_parser import parse_xmind_file
+from xmind2testlink.xmind_parser import xmind_to_suite
 
 
 def xmind_to_testlink(xmind):
     xml_out = xmind[:-5] + 'xml'
-    suite = parse_xmind_file(xmind)
+    suite = xmind_to_suite(xmind)
     to_testlink_xml_file(suite, xml_out)
     return xml_out
 
 
 def get_testcase_count(xmind):
-    suite = parse_xmind_file(xmind)
+    suite = xmind_to_suite(xmind)
     to_testlink_xml_content(suite)
     return cache.get('testcase_count', 0)
 

@@ -5,6 +5,14 @@ _config = {'sep': ' ',
            'precondition_sep': '\n----\n',
            'summary_sep': '\n----\n'}
 
+cache = {}
+
+
+def open_and_cache_xmind(xmind_file):
+    if not cache:
+        cache['sheet'] = xmind_to_dict(xmind_file)
+        cache['root'] = get_default_sheet(cache['sheet'])['topic']
+
 
 def xmind_to_dict(file_path):
     """Open and convert xmind to dict type."""

@@ -2,22 +2,16 @@
 Module to parse xmind file into test suite and test case objects.
 """
 
-from .sharedparser import *
-
-cache = {}
-
-
-def _open_xmind(xmind_file):
-    if not cache:
-        cache['sheet'] = xmind_to_dict(xmind_file)
-        cache['root'] = get_default_sheet(cache['sheet'])['topic']
+from xmind2testlink import sharedparser as __
+from .datatype import *
 
 
 def xmind_to_suite(xmind_file):
-    cache.clear()
-    _open_xmind(xmind_file)
+    """Auto detect and parser xmind to test suite object."""
+    __.cache.clear()
+    __.open_and_cache_xmind(xmind_file)
 
-    if is_v2_format(cache['root']):
+    if __.is_v2_format(__.cache['root']):
         return xmind_to_suite_v2(xmind_file)
     else:
         return xmind_to_suite_v1(xmind_file)
@@ -32,13 +26,13 @@ def xmind_to_suite_v1(xmind_file):
         testcase_topics = suite_dict.get('topics', [])
 
         for _ in testcase_topics:
-            t = parse_testcase(_)
+            t = __.parse_testcase(_)
             suite.testcase_list.append(t)
 
         return suite
 
-    _open_xmind(xmind_file)
-    root = cache['root']
+    __.open_and_cache_xmind(xmind_file)
+    root = __.cache['root']
 
     suite = TestSuite()
     suite.name = root['title']
@@ -52,8 +46,8 @@ def xmind_to_suite_v1(xmind_file):
 
 def xmind_to_suite_v2(xmind_file):
     def parse_testcase_list(cases_dict, parent=None):
-        if is_testcase_topic(cases_dict):
-            yield parse_testcase(cases_dict, parent)
+        if __.is_testcase_topic(cases_dict):
+            yield __.parse_testcase(cases_dict, parent)
 
         else:
             if not parent:
@@ -79,8 +73,8 @@ def xmind_to_suite_v2(xmind_file):
 
         return suite
 
-    _open_xmind(xmind_file)
-    root = cache['root']
+    __.open_and_cache_xmind(xmind_file)
+    root = __.cache['root']
 
     suite = TestSuite()
     suite.name = root['title']
