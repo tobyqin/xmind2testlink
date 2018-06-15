@@ -3,7 +3,7 @@ from json import dumps
 from os.path import join, dirname
 
 import xmind2testlink.xmind_parser as parser
-from xmind2testlink.sharedparser import flat_suite
+from xmind2testlink.sharedparser import flat_suite, cache
 from xmind2testlink.xreader import set_logger_level
 
 set_logger_level(logging.DEBUG)
@@ -15,11 +15,13 @@ xmind_v2_file = join(xml_dir, 'Test cases by xmind v2.xmind')
 
 def test_parse_xmind_auto():
     v1 = parser.xmind_to_suite(xmind_v1_file)
+    cache.clear()
     exp = parser.xmind_to_suite_v1(xmind_v1_file)
     assert v1.to_dict() == exp.to_dict()
 
     v2 = parser.xmind_to_suite(xmind_v2_file)
-    exp = parser.xmind_to_suite_v1(xmind_v1_file)
+    cache.clear()
+    exp = parser.xmind_to_suite_v2(xmind_v2_file)
     assert v2.to_dict() == exp.to_dict()
 
 
