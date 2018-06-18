@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xmind2TestLink</title>
+</head>
+<body>
+
+<body>
+<div class="splash-container">
+    <h1>
+        Xmind to Testlink
+    </h1>
+    <div class="splash">
+        <div class="splash-head">
+            <div class="select-xmind splash-subhead">
+                <label id="file-label" for="file-upload" onmouseout="normal(this)" onmouseover="hover(this)">Click Here
+                    to Choose Your Xmind File
+                </label>
+                <input id="file-upload" accept=".xmind" type="file" required/>
+                &nbsp;<button class="pure-button  pure-button-primary">To TestLink</button>
+            </div>
+            <h2>
+                Recent Converted Files
+            </h2>
+            <table class="pure-table recent-xminds">
+                <thead>
+                <tr>
+                    <th width="60%">Name</th>
+                    <th width="20%">Time</th>
+                    <th>Download</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>file name 1.xmind</td>
+                    <td>2 days ago</td>
+                    <td><a>Xmind</a> / <a>TestLink</a> / <a>Preview</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="home-footer">
+        Powered by xmind2testlink | How to Use | Copyright © 2017 Toby Qin
+    </div>
+</div>
+
+<script>
+    function hover(x) {
+        x.style.textDecoration = "underline";
+    }
+
+    function normal(x) {
+        x.style.textDecoration = "none";
+    }
+
+    document.getElementById("file-upload").addEventListener("change", function (e) {
+        if (this.value) {
+            var name = this.value.split("\\").pop();
+            document.getElementById("file-label").innerHTML = name;
+        }
+    });
+
+</script>
+
+</body>
+
+</html>
