@@ -9,7 +9,7 @@ table.tests-table {
     width: 100%;
 }
 
-table.tests-table tr td{
+table.tests-table tr td {
     border-bottom: #cbcbcb solid 1px;
 }
 
@@ -20,6 +20,7 @@ table.tests-table tr td{
     color: white;
     border-radius: 4px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    font-size: 0.6em;
 }
 
 .tag-success {
@@ -91,7 +92,11 @@ a:focus {
 }
 
 ol {
-    font-size: 0.5em
+    margin-left: -20px;
+}
+
+ol ul {
+    margin-left: -30px;
 }
 
 .tooltip {
@@ -108,9 +113,13 @@ ol {
     border-radius: 6px;
     position: absolute;
     z-index: 1;
+    min-width: 60px;
     max-width: 400px;
+    width: max-content;
+    width: -moz-max-content;
     word-wrap: break-word;
-    word-break: normal;
+    word-break: break-word;
+    white-space: normal;
 }
 
 .tooltip:hover .tooltiptext {
@@ -118,15 +127,12 @@ ol {
 }
 
 .footer {
-    width: 100%;
+    width: auto;
     background: #111;
     color: #666;
     text-align: center;
     padding: 1em;
-    margin-left: -30px;
     font-size: 80%;
-    position: fixed;
-    bottom: 0;
 }
 
 .home-footer {
@@ -229,4 +235,10 @@ input[type="file"] {
 #file-label {
     font-size: 1.5em;
     line-height: 2em;
+    text-decoration: none;
+}
+
+#file-label:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

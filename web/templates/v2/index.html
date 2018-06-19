@@ -16,7 +16,7 @@
         <div class="splash-head">
             <div class="select-xmind splash-subhead">
                 <form method="post" enctype="multipart/form-data">
-                    <label id="file-label" for="file" onmouseout="normal(this)" onmouseover="hover(this)">Click
+                    <label id="file-label" for="file">Click
                         Here
                         to Choose Your Xmind
                     </label>
@@ -26,15 +26,12 @@
                 </form>
             </div>
             {% if records %}
-                <h2>
-                    Recent Converted Files
-                </h2>
                 <table class="pure-table recent-xminds">
                     <thead>
                     <tr>
-                        <th width="60%">Name</th>
-                        <th width="20%">Time</th>
-                        <th>Download</th>
+                        <th width="60%">NAME</th>
+                        <th width="20%">TIME</th>
+                        <th>ACTIONS</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -63,18 +60,9 @@
 </div>
 
 <script>
-    function hover(x) {
-        x.style.textDecoration = "underline";
-    }
-
-    function normal(x) {
-        x.style.textDecoration = "none";
-    }
-
     document.getElementById("file").addEventListener("change", function (e) {
         if (this.value) {
-            var name = this.value.split("\\").pop();
-            document.getElementById("file-label").innerHTML = name;
+            document.getElementById("file-label").innerHTML = this.value.split("\\").pop();
         }
     });
 
