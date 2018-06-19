@@ -13,6 +13,11 @@ table.tests-table tr td {
     border-bottom: #cbcbcb solid 1px;
 }
 
+table.tests-table tr th {
+    background-color: black;
+    color: #fff;
+}
+
 table.recent-xminds td:nth-child(1) {
     text-align: left;
 }
@@ -109,7 +114,7 @@ ol ul {
     width: max-content;
     width: -moz-max-content;
     word-wrap: break-word;
-    word-break: break-word;
+    word-break: normal;
     white-space: normal;
 }
 
@@ -140,7 +145,7 @@ ol ul {
     text-align: center;
     padding: 1em;
     font-size: 1em;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .splash-container {
@@ -156,21 +161,22 @@ ol ul {
 
 .splash {
     width: 80%;
-    height: 50%;
+    height: 60%;
     margin: auto;
-    position: absolute;
-    top: 100px;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    position: relative;
+    /*top: -10px;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
     text-align: center;
+    margin-top: 2em;
 }
 
 .splash-head {
     color: white;
-    border: 2px solid white;
-    padding: 1em 1.6em;
-    border-radius: 5px;
+    /*border: 0.5px solid white;*/
+    padding: 1.5em 1.6em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .splash-head p {
@@ -206,10 +212,11 @@ table.recent-xminds th {
     text-align: center;
     color: #fff;
     font-size: 3em;
-    margin-top: 1.5em;
-    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-bottom: 0;
     font-weight: 600;
     text-transform: uppercase;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 .splash-container h2 {
@@ -229,6 +236,14 @@ table.recent-xminds th {
 
 input[type="file"] {
     display: none;
+}
+
+input[type="submit"] {
+    font-size: 1.2em;
+}
+
+input[type="submit"]:hover {
+    box-shadow: 0 0 6px rgba(35, 173, 255, 1);
 }
 
 #file-label {
