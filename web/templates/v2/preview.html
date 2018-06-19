@@ -11,7 +11,7 @@
 <div class="header">
     <h1>{{ name }} - Preview</h1>
     <h2>Suite: {{ suite_count }} / Tests: {{ suite | length }}
-        / <a href="{{ url_for("download_file",filename= name) }}">Download TestLink XML</a>
+        / <a href="{{ url_for("download_file",filename= name) }}">Get TestLink XML</a>
         / <a href="{{ url_for("index") }}">Go Back</a></h2>
 </div>
 <table class="pure-table tests-table">
@@ -38,16 +38,16 @@
                 {% if test.preconditions %}
                     <div class="pure-button tag-info tooltip">PriCond.
                         <p class="tooltiptext">
-             <b>Preconditions:</b> <br>
-              {{ test.preconditions | replace('\n','<br>') |safe }}
-            </p></div>
+                            <b>Preconditions:</b> <br>
+                            {{ test.preconditions | replace('\n','<br>') |safe }}
+                        </p></div>
                 {% endif %}
                 {% if test.summary %}
                     <div class="pure-button tag-warn tooltip">Summary
                         <p class="tooltiptext">
-               <b>Summary:</b> <br>
-              {{ test.summary | replace('\n','<br>') |safe }}
-            </p></div>
+                            <b>Summary:</b> <br>
+                            {{ test.summary | replace('\n','<br>') |safe }}
+                        </p></div>
                 {% endif %}
             <td>
                 {% if test.steps %}
@@ -65,12 +65,13 @@
                 {% endif %}
             </td>
         </tr>
-
     {% endfor %}
     </tbody>
 </table>
 <div class="footer">
-    Powered by xmind2testlink | How to Use | Copyright © 2017 Toby Qin
+    Powered by <a href="https://github.com/tobyqin/xmind2testlink">Xmind2TestLink</a> |
+    <a href="https://github.com/tobyqin/xmind2testlink/blob/master/README.md">How To Use</a> |
+    <a href="https://github.com/tobyqin/xmind2testlink/issues/new">Report Issue</a> | Copyright &copy; 2018 Toby Qin
 </div>
 </body>
 </html>

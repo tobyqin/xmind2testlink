@@ -48,22 +48,6 @@ table.recent-xminds td:nth-child(1) {
     /* this is a light blue */
 }
 
-.button-xsmall {
-    font-size: 70%;
-}
-
-.button-small {
-    font-size: 85%;
-}
-
-.button-large {
-    font-size: 110%;
-}
-
-.button-xlarge {
-    font-size: 125%;
-}
-
 .header {
     margin: 0;
     color: #333;
@@ -140,6 +124,14 @@ ol ul {
     text-align: center;
     padding: 1em;
     font-size: 80%;
+}
+
+.footer a {
+    color: #ccc;
+}
+
+.home-footer a {
+    color: #fff;
 }
 
 .home-footer {
