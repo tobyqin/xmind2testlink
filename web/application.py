@@ -4,16 +4,18 @@ from contextlib import closing
 from os.path import join, exists
 
 import arrow
-from flask import Flask, request, send_from_directory, g, render_template, abort
+from flask import Flask, request, send_from_directory, g, render_template, abort, redirect
 from werkzeug.utils import secure_filename
 
-from xmind2testlink.main import xmind_to_testlink
+from xmind2testlink.main import xmind_to_suite, xmind_to_testlink
+from xmind2testlink.sharedparser import flat_suite
 
 UPLOAD_FOLDER = './uploads'
 ALLOWED_EXTENSIONS = ['xmind']
 DEBUG = True
 DATABASE = './data.db3'
 HOST = '0.0.0.0'
+V2 = True
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -87,7 +89,7 @@ def get_latest_record():
 
 
 def get_records(limit=5):
-    short_name_length = 20
+    short_name_length = 50
     c = g.db.cursor()
     sql = "select * from records where is_deleted<>1 order by id desc limit {}".format(int(limit))
     c.execute(sql)
@@ -148,18 +150,24 @@ def index(download_xml=None):
     g.download_xml = download_xml
 
     if request.method == 'POST':
-        files = request.files.getlist('files[]')
+        if 'file' not in request.files:
+            return redirect(request.url)
 
-        for file in files:
-            save_file(file)
+        file = request.files['file']
+        if file.filename == '':
+            return redirect(request.url)
 
-        verify_uploaded_files(files)
+        save_file(file)
+        verify_uploaded_files([file])
         delete_records()
 
     else:
         g.upload_form = True
 
-    return render_template('index.html', download_xml=g.download_xml, records=list(get_records()))
+    if V2:
+        return render_template('v2/index.html', download_xml=g.download_xml, records=list(get_records()))
+    else:
+        return render_template('index.html', download_xml=g.download_xml, records=list(get_records()))
 
 
 @app.route('/<filename>/to/testlink')
@@ -180,7 +188,21 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
+@app.route('/preview/<filename>')
+def preview_file(filename):
+    full_path = join(app.config['UPLOAD_FOLDER'], filename)
+
+    if not exists(full_path):
+        abort(404)
+
+    suite = xmind_to_suite(full_path)
+    suite_count = len(suite.to_dict())
+    suite = flat_suite(suite)
+
+    return render_template('v2/preview.html', name=filename, suite=suite, suite_count=suite_count)
+
+
 init()
 
 if __name__ == '__main__':
-    app.run(HOST, debug=DEBUG)
+    app.run(HOST, debug=DEBUG, port=5001)

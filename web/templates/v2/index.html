@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Xmind2TestLink</title>
     <link rel="shortcut icon" href="{{ url_for('static',filename='favicon.ico') }}" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static',filename='css/pure-min.css') }}">
     <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static',filename='css/v2.css') }}">
 </head>
 <body>
@@ -14,38 +15,51 @@
     <div class="splash">
         <div class="splash-head">
             <div class="select-xmind splash-subhead">
-                <label id="file-label" for="file-upload" onmouseout="normal(this)" onmouseover="hover(this)">Click Here
-                    to Choose Your Xmind File
-                </label>
-                <input id="file-upload" accept=".xmind" type="file" required/>
-                &nbsp;<button class="pure-button  pure-button-primary">To TestLink</button>
+                <form method="post" enctype="multipart/form-data">
+                    <label id="file-label" for="file" onmouseout="normal(this)" onmouseover="hover(this)">Click
+                        Here
+                        to Choose Your Xmind
+                    </label>
+                    <input id="file" accept=".xmind" type="file" name="file" required/><br>
+                    <input type="submit" class="pure-button pure-button-primary button-xlarge"
+                           value="Convert To TestLink"/>
+                </form>
             </div>
-            <h2>
-                Recent Converted Files
-            </h2>
-            <table class="pure-table recent-xminds">
-                <thead>
-                <tr>
-                    <th width="60%">Name</th>
-                    <th width="20%">Time</th>
-                    <th>Download</th>
-                </tr>
-                </thead>
+            {% if records %}
+                <h2>
+                    Recent Converted Files
+                </h2>
+                <table class="pure-table recent-xminds">
+                    <thead>
+                    <tr>
+                        <th width="60%">Name</th>
+                        <th width="20%">Time</th>
+                        <th>Download</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for record in records %}
+                        <tr>
+                            <td title="{{ record[1] }}"> {{ record[0] }}</td>
+                            <td>{{ record[2] }}</td>
+                            <td><a href="{{ url_for('uploaded_file',filename=record[1]) }}">XMIND</a> |
+                                <a href="{{ url_for('download_file',filename=record[1]) }}">XML</a>|
+                                <a href="{{ url_for('preview_file',filename=record[1]) }}">PREVIEW</a></td>
+                        </tr>
+                    {% endfor %}
 
-                <tbody>
-                <tr>
-                    <td>file name 1.xmind</td>
-                    <td>2 days ago</td>
-                    <td><a>Xmind</a> / <a>TestLink</a> / <a>Preview</a></td>
-                </tr>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Welcome! Xmind2TestLink is a tool to help you convert xmind file to testlink xml file, and then you
+                    will be able to import the xml into TestLink. Are you ready? Upload your xmind file now.</p>
+            {% endif %}
         </div>
+        <div class="home-footer">
+            Powered by xmind2testlink | How to Use | Copyright © 2017 Toby Qin
+        </div>
+    </div>
 
-    </div>
-    <div class="home-footer">
-        Powered by xmind2testlink | How to Use | Copyright © 2017 Toby Qin
-    </div>
 </div>
 
 <script>
@@ -57,7 +71,7 @@
         x.style.textDecoration = "none";
     }
 
-    document.getElementById("file-upload").addEventListener("change", function (e) {
+    document.getElementById("file").addEventListener("change", function (e) {
         if (this.value) {
             var name = this.value.split("\\").pop();
             document.getElementById("file-label").innerHTML = name;

@@ -33,7 +33,7 @@ class TestCase():
         me = {'name': self.name,
               'summary': self.summary,
               'preconditions': self.preconditions,
-              'importance': self.importance,
+              'importance': self.importance or 2,
               'execution_type': self.execution_type,
               'steps': []}
 

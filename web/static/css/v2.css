@@ -1,0 +1,232 @@
+body {
+    padding: 30px;
+}
+
+table.tests-table {
+    font-size: 0.8em;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+table.tests-table tr td{
+    border-bottom: #cbcbcb solid 1px;
+}
+
+.tag-success,
+.tag-error,
+.tag-warn,
+.tag-info {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.tag-success {
+    background: rgb(28, 184, 65);
+    /* this is a green */
+}
+
+.tag-error {
+    background: rgb(202, 60, 60);
+    /* this is a maroon */
+}
+
+.tag-warn {
+    background: rgb(223, 117, 20);
+    /* this is an orange */
+}
+
+.tag-info {
+    background: rgb(66, 184, 221);
+    /* this is a light blue */
+}
+
+.button-xsmall {
+    font-size: 70%;
+}
+
+.button-small {
+    font-size: 85%;
+}
+
+.button-large {
+    font-size: 110%;
+}
+
+.button-xlarge {
+    font-size: 125%;
+}
+
+.header {
+    margin: 0;
+    color: #333;
+    text-align: center;
+    padding: 1.5em 2em 0;
+    border-bottom: 1px solid #eee;
+}
+
+.header h1 {
+    margin: 0.2em 0;
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+.header h2 {
+    font-weight: 500;
+    font-size: 1.5em;
+    color: #ccc;
+    padding: 0;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(61, 146, 201);
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+ol {
+    font-size: 0.5em
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: left;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    max-width: 400px;
+    word-wrap: break-word;
+    word-break: normal;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.footer {
+    width: 100%;
+    background: #111;
+    color: #666;
+    text-align: center;
+    padding: 1em;
+    margin-left: -30px;
+    font-size: 80%;
+    position: fixed;
+    bottom: 0;
+}
+
+.home-footer {
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    font-size: 1em;
+    margin-top: 50px;
+}
+
+.splash-container {
+    background: #1f8dd6;
+    z-index: 1;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed !important;
+}
+
+.splash {
+    width: 80%;
+    height: 50%;
+    margin: auto;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+}
+
+.splash-head {
+    color: white;
+    border: 2px solid white;
+    padding: 1em 1.6em;
+    border-radius: 5px;
+}
+
+.splash-head p {
+    color: white;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+.splash-subhead {
+    color: white;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+table.recent-xminds {
+    font-size: 0.8em;
+    margin-top: 20px;
+    width: 100%;
+}
+
+table.recent-xminds a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+table.recent-xminds th {
+    text-align: center;
+    background-color: #f2f3f4;
+}
+
+.splash-container h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 3em;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.splash-container h2 {
+    text-align: left;
+    color: #fff;
+    font-size: 1em;
+    margin-bottom: 1em;
+    font-weight: 300;
+}
+
+.select-xmind {
+    margin: auto;
+    width: 60%;
+    border-bottom: 1px solid white;
+    padding-bottom: 15px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#file-label {
+    font-size: 1.5em;
+    line-height: 2em;
+}
