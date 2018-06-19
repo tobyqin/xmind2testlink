@@ -4,7 +4,7 @@ body {
 
 table.tests-table {
     font-size: 0.8em;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 40px;
     width: 100%;
 }
@@ -13,14 +13,19 @@ table.tests-table tr td {
     border-bottom: #cbcbcb solid 1px;
 }
 
+table.recent-xminds td:nth-child(1) {
+    text-align: left;
+}
+
 .tag-success,
 .tag-error,
 .tag-warn,
 .tag-info {
     color: white;
-    border-radius: 4px;
+    border-radius: 3px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    font-size: 0.6em;
+    font-size: 0.8em;
+    padding: 4px;
 }
 
 .tag-success {
@@ -93,6 +98,8 @@ a:focus {
 
 ol {
     margin-left: -20px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 ol ul {
@@ -110,7 +117,7 @@ ol ul {
     color: #fff;
     text-align: left;
     padding: 5px;
-    border-radius: 6px;
+    border-radius: 4px;
     position: absolute;
     z-index: 1;
     min-width: 60px;
@@ -241,4 +248,12 @@ input[type="file"] {
 #file-label:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.recent-xminds tr:hover td {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.tests-table tr:hover td {
+    background-color: #f2f3f4;
 }

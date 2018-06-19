@@ -4,7 +4,7 @@ from contextlib import closing
 from os.path import join, exists
 
 import arrow
-from flask import Flask, request, send_from_directory, g, render_template, abort, redirect
+from flask import Flask, request, send_from_directory, g, render_template, abort, redirect, url_for
 from werkzeug.utils import secure_filename
 
 from xmind2testlink.main import xmind_to_suite, xmind_to_testlink
@@ -88,8 +88,8 @@ def get_latest_record():
         return found[0]
 
 
-def get_records(limit=5):
-    short_name_length = 50
+def get_records(limit=10):
+    short_name_length = 120 if V2 else 30
     c = g.db.cursor()
     sql = "select * from records where is_deleted<>1 order by id desc limit {}".format(int(limit))
     c.execute(sql)
@@ -124,6 +124,7 @@ def save_file(file):
         file.save(upload_to)
         insert_record(filename)
         g.is_success = True
+        return filename
 
     elif file.filename == '':
         g.is_success = False
@@ -148,16 +149,18 @@ def index(download_xml=None):
     g.invalid_files = []
     g.error = None
     g.download_xml = download_xml
+    g.filename = None
 
     if request.method == 'POST':
         if 'file' not in request.files:
             return redirect(request.url)
 
         file = request.files['file']
+
         if file.filename == '':
             return redirect(request.url)
 
-        save_file(file)
+        g.filename = save_file(file)
         verify_uploaded_files([file])
         delete_records()
 
@@ -165,7 +168,10 @@ def index(download_xml=None):
         g.upload_form = True
 
     if V2:
-        return render_template('v2/index.html', download_xml=g.download_xml, records=list(get_records()))
+        if g.filename:
+            return redirect(url_for('preview_file', filename=g.filename))
+        else:
+            return render_template('v2/index.html', records=list(get_records()))
     else:
         return render_template('index.html', download_xml=g.download_xml, records=list(get_records()))
 

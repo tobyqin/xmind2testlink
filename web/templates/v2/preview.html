@@ -11,8 +11,8 @@
 <div class="header">
     <h1>{{ name }} - Preview</h1>
     <h2>Suite: {{ suite_count }} / Tests: {{ suite | length }}
-        / <a href="{{ url_for("download_file",filename= name) }}">To TestLink XML</a>
-        / <a href="{{ url_for("index") }}">Choose Another</a></h2>
+        / <a href="{{ url_for("download_file",filename= name) }}">Download TestLink XML</a>
+        / <a href="{{ url_for("index") }}">Go Back</a></h2>
 </div>
 <table class="pure-table tests-table">
     <thead>
@@ -31,19 +31,19 @@
             <td>{{ test.suite }}</td>
             <td>{{ test.name }}</td>
             <td>
-                <div class="pure-button tag-success tooltip">
-                    Pri. {{ test.importance }}
+                <div class="tag-success tooltip">
+                    Priority {{ test.importance }}
                     <span class="tooltiptext">Priority {{ test.importance }} </span>
                 </div>
                 {% if test.preconditions %}
-                    <div class="pure-button tag-info tooltip">PreCon.
+                    <div class="pure-button tag-info tooltip">PriCond.
                         <p class="tooltiptext">
              <b>Preconditions:</b> <br>
               {{ test.preconditions | replace('\n','<br>') |safe }}
             </p></div>
                 {% endif %}
                 {% if test.summary %}
-                    <div class="pure-button tag-warn tooltip">Sum.
+                    <div class="pure-button tag-warn tooltip">Summary
                         <p class="tooltiptext">
                <b>Summary:</b> <br>
               {{ test.summary | replace('\n','<br>') |safe }}
