@@ -208,6 +208,11 @@ def preview_file(filename):
     return render_template('v2/preview.html', name=filename, suite=suite, suite_count=suite_count)
 
 
+@app.errorhandler(Exception)
+def app_error(e):
+    return str(e)
+
+
 init()
 
 if __name__ == '__main__':

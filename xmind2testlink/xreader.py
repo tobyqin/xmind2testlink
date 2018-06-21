@@ -15,7 +15,7 @@ content_xml = "content.xml"
 comments_xml = "comments.xml"
 
 _log_name = config['logName'] or __file__
-_log_level = config['logLevel'] or logging.WARNING
+_log_level = config['logLevel'] or logging.WARN
 _log_fmt = config['logFormat'] or '%(asctime)s %(levelname)-8s: %(message)s'
 
 logger = logging.getLogger(_log_name)

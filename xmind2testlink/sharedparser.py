@@ -5,13 +5,27 @@ _config = {'sep': ' ',
            'precondition_sep': '\n----\n',
            'summary_sep': '\n----\n'}
 
-cache = {}
+
+def ignore_filter(topics):
+    """filter topics starts with !"""
+    result = [t for t in topics if not t['title'].startswith('!')]
+
+    for topic in result:
+        more_topics = topic.get('topics', [])
+        topic['topics'] = ignore_filter(more_topics)
+
+    return result
 
 
 def open_and_cache_xmind(xmind_file):
     if not cache:
         cache['sheet'] = xmind_to_dict(xmind_file)
         cache['root'] = get_default_sheet(cache['sheet'])['topic']
+        root_topics = cache['root'].get('topics', [])
+        assert len(root_topics) > 0, "Invalid Xmind, should have at least 1 topic!"
+        cache['root']['topics'] = ignore_filter(root_topics)
+
+    get_logger().debug('Cached xmind: {}'.format(cache))
 
 
 def xmind_to_dict(file_path):
@@ -27,9 +41,10 @@ def xmind_to_dict(file_path):
     return data
 
 
-def get_default_sheet(d):
-    assert len(d) >= 0, 'Invalid xmind: should have at least 1 sheet!'
-    return d[0]
+def get_default_sheet(sheets):
+    """First sheet is the default sheet."""
+    assert len(sheets) >= 0, 'Invalid xmind: should have at least 1 sheet!'
+    return sheets[0]
 
 
 def get_logger():
@@ -38,6 +53,7 @@ def get_logger():
 
 
 def flat_suite(suite):
+    """Convert a suite object into flat testcase list."""
     tests = []
 
     for suite in suite.sub_suites:
@@ -81,10 +97,13 @@ def is_testcase_topic(d):
 
     child_node = d.get('topics', [])
 
+    # if only one child topic and it is image or blank, consider parent is a test
+    if len(child_node) == 1 and child_node[0]['title'] in ('[Image]', '[Blank]'):
+        return True
+
     if child_node:
         return False
 
-    # consider image node?
     return True
 
 
@@ -118,7 +137,7 @@ def parse_step(step_dict):
     step.action = step_dict['title']
     expected_node = step_dict.get('topics', None)
 
-    if expected_node is not None:
+    if expected_node:
         step.expected = expected_node[0]['title']
 
     return step
@@ -146,7 +165,7 @@ def parse_testcase(testcase_dict, parent=None):
 
     steps_node = testcase_dict.get('topics', None)
 
-    if steps_node is not None:
+    if steps_node:
         testcase.steps = parse_steps(steps_node)
 
     return testcase

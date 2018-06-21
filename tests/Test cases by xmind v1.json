@@ -1,0 +1,189 @@
+[
+  {
+    "execution_type": "",
+    "summary": "summary",
+    "preconditions": "precondition",
+    "suite": "demo suite",
+    "name": "test case 1",
+    "importance": 1,
+    "steps": [
+      {
+        "expected": "expected 1",
+        "number": 1,
+        "action": "step 1",
+        "execution_type": ""
+      },
+      {
+        "expected": "expected 2",
+        "number": 2,
+        "action": "step 2",
+        "execution_type": ""
+      }
+    ]
+  },
+  {
+    "execution_type": "",
+    "summary": "summary",
+    "preconditions": "precondition",
+    "suite": "demo suite",
+    "name": "test case 2",
+    "importance": 1,
+    "steps": [
+      {
+        "expected": "expected 1",
+        "number": 1,
+        "action": "step 1",
+        "execution_type": ""
+      },
+      {
+        "expected": "expected 2",
+        "number": 2,
+        "action": "step 2",
+        "execution_type": ""
+      }
+    ]
+  },
+  {
+    "execution_type": "",
+    "summary": "summary",
+    "preconditions": "given something",
+    "suite": "demo suite",
+    "name": "test case 3",
+    "importance": 2,
+    "steps": [
+      {
+        "expected": "expected 1",
+        "number": 1,
+        "action": "step 1",
+        "execution_type": ""
+      },
+      {
+        "expected": "expected 2",
+        "number": 2,
+        "action": "step 2",
+        "execution_type": ""
+      },
+      {
+        "expected": "expected 3",
+        "number": 3,
+        "action": "step 3",
+        "execution_type": ""
+      }
+    ]
+  },
+  {
+    "execution_type": "",
+    "summary": "note will be summary field for this test case",
+    "preconditions": "comments will be showing as precondition",
+    "suite": "apple suite",
+    "name": "test case title for apple 1",
+    "importance": 1,
+    "steps": [
+      {
+        "expected": "step1 expected",
+        "number": 1,
+        "action": "step1 action",
+        "execution_type": ""
+      },
+      {
+        "expected": "step2 expected",
+        "number": 2,
+        "action": "step2 action",
+        "execution_type": ""
+      },
+      {
+        "expected": "step3 expected",
+        "number": 3,
+        "action": "step3 action",
+        "execution_type": ""
+      }
+    ]
+  },
+  {
+    "execution_type": "",
+    "summary": "summary of test case",
+    "preconditions": "",
+    "suite": "apple suite",
+    "name": "test case title for apple 2",
+    "importance": 2,
+    "steps": []
+  },
+  {
+    "execution_type": "",
+    "summary": "",
+    "preconditions": "only with precondition",
+    "suite": "banana suite",
+    "name": "my test case 1",
+    "importance": 3,
+    "steps": [
+      {
+        "expected": "",
+        "number": 1,
+        "action": "step 1 action without expected",
+        "execution_type": ""
+      },
+      {
+        "expected": "step2 expected",
+        "number": 2,
+        "action": "step 2 action",
+        "execution_type": ""
+      },
+      {
+        "expected": "step 3 expected",
+        "number": 3,
+        "action": "step 3 action",
+        "execution_type": ""
+      }
+    ]
+  },
+  {
+    "execution_type": "",
+    "summary": "",
+    "preconditions": "",
+    "suite": "banana suite",
+    "name": "my test case 2",
+    "importance": 1,
+    "steps": []
+  },
+  {
+    "execution_type": "",
+    "summary": "",
+    "preconditions": "",
+    "suite": "orange suite",
+    "name": "my test case 1",
+    "importance": 2,
+    "steps": [
+      {
+        "expected": "",
+        "number": 1,
+        "action": "without priority for this test",
+        "execution_type": ""
+      }
+    ]
+  },
+  {
+    "execution_type": "",
+    "summary": "",
+    "preconditions": "",
+    "suite": "orange suite",
+    "name": "my test case 2",
+    "importance": 2,
+    "steps": [
+      {
+        "expected": "expected something",
+        "number": 1,
+        "action": "start from this step",
+        "execution_type": ""
+      }
+    ]
+  },
+  {
+    "execution_type": "",
+    "summary": "",
+    "preconditions": "",
+    "suite": "orange suite",
+    "name": "test 3 without steps",
+    "importance": 2,
+    "steps": []
+  }
+]
