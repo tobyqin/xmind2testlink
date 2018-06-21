@@ -6,6 +6,11 @@ from xmind2testlink import sharedparser as __
 from .datatype import *
 
 
+def xmind_to_flat_dict(xmind_file):
+    s = xmind_to_suite(xmind_file)
+    return __.flat_suite(s)
+
+
 def xmind_to_suite(xmind_file):
     """Auto detect and parser xmind to test suite object."""
     __.cache.clear()
