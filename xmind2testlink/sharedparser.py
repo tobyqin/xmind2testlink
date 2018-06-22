@@ -110,6 +110,11 @@ def is_testcase_topic(d):
 def build_testcase_title(nodes):
     values = [n['title'] for n in nodes]
     values = _filter_empty_value(values)
+
+    # when sep is not blank, will add space around sep, e.g. '/' will be changed to ' / '
+    if _config['sep'] != ' ':
+        _config['sep'] = ' {} '.format(_config['sep'])
+
     return _config['sep'].join(values)
 
 
