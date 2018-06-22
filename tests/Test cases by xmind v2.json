@@ -1,0 +1,187 @@
+[
+  {
+    "steps": [
+      {
+        "action": "equal to \"login.example.com\"",
+        "execution_type": "",
+        "expected": "",
+        "number": 1
+      }
+    ],
+    "name": "verify login page url",
+    "summary": "will changed to summary part 1",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 2,
+    "preconditions": "comments part 1 => precondition"
+  },
+  {
+    "steps": [
+      {
+        "action": "match design",
+        "execution_type": "",
+        "expected": "",
+        "number": 1
+      }
+    ],
+    "name": "verify login page layout",
+    "summary": "will changed to summary part 1",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 1,
+    "preconditions": "comments part 1 => precondition"
+  },
+  {
+    "steps": [
+      {
+        "action": "step ..",
+        "execution_type": "",
+        "expected": "expected",
+        "number": 1
+      }
+    ],
+    "name": "verify login page components username input",
+    "summary": "will changed to summary part 1\n----\nwill changed to summary part 2",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 1,
+    "preconditions": "comments part 1 => precondition"
+  },
+  {
+    "steps": [
+      {
+        "action": "step ...",
+        "execution_type": "",
+        "expected": "",
+        "number": 1
+      }
+    ],
+    "name": "verify login page components password input",
+    "summary": "will changed to summary part 1\n----\nwill changed to summary part 2",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 1,
+    "preconditions": "comments part 1 => precondition"
+  },
+  {
+    "steps": [],
+    "name": "verify login page components login button",
+    "summary": "will changed to summary part 1\n----\nwill changed to summary part 2\n----\nnotes part 3 => summary",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 1,
+    "preconditions": "comments part 1 => precondition"
+  },
+  {
+    "steps": [],
+    "name": "verify login page components translation - en",
+    "summary": "will changed to summary part 1\n----\nwill changed to summary part 2",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 1,
+    "preconditions": "comments part 1 => precondition\n----\ncomment part 2 => precondition"
+  },
+  {
+    "steps": [],
+    "name": "verify login page components translation - cn",
+    "summary": "will changed to summary part 1\n----\nwill changed to summary part 2",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 2,
+    "preconditions": "comments part 1 => precondition\n----\ncomment part 2 => precondition\n----\ncomments part 3=> precondition"
+  },
+  {
+    "steps": [
+      {
+        "action": "step 1",
+        "execution_type": "",
+        "expected": "",
+        "number": 1
+      },
+      {
+        "action": "step 2",
+        "execution_type": "",
+        "expected": "expected",
+        "number": 2
+      }
+    ],
+    "name": "verify login page components translation action = valid name +  valid password",
+    "summary": "will changed to summary part 1\n----\nwill changed to summary part 2",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 1,
+    "preconditions": "comments part 1 => precondition\n----\ncomment part 2 => precondition"
+  },
+  {
+    "steps": [],
+    "name": "verify login page components translation action = valid name + bad password",
+    "summary": "will changed to summary part 1\n----\nwill changed to summary part 2",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 1,
+    "preconditions": "comments part 1 => precondition\n----\ncomment part 2 => precondition"
+  },
+  {
+    "steps": [],
+    "name": "verify login page components translation action = bad name + bad password",
+    "summary": "will changed to summary part 1\n----\nwill changed to summary part 2",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 2,
+    "preconditions": "comments part 1 => precondition\n----\ncomment part 2 => precondition"
+  },
+  {
+    "steps": [],
+    "name": "verify home page",
+    "summary": "last trail topic was not marked with priority, it will be treated as test case by default, and its priority will be set to 2",
+    "suite": "ui check",
+    "execution_type": "",
+    "importance": 2,
+    "preconditions": ""
+  },
+  {
+    "steps": [],
+    "name": "verify users table schema",
+    "summary": "",
+    "suite": "db check",
+    "execution_type": "",
+    "importance": 2,
+    "preconditions": ""
+  },
+  {
+    "steps": [],
+    "name": "verify users table functions",
+    "summary": "If the trail topic was not marked with priority, it will be treated as a test case by default, and its priority will be set to 2",
+    "suite": "db check",
+    "execution_type": "",
+    "importance": 2,
+    "preconditions": ""
+  },
+  {
+    "steps": [],
+    "name": "verify users table [Blank]",
+    "summary": "empty topic should be ignored",
+    "suite": "db check",
+    "execution_type": "",
+    "importance": 2,
+    "preconditions": ""
+  },
+  {
+    "steps": [],
+    "name": "[Blank] topics after empty title will be ignored too",
+    "summary": "",
+    "suite": "db check",
+    "execution_type": "",
+    "importance": 2,
+    "preconditions": ""
+  },
+  {
+    "steps": [],
+    "name": "[Image] topics after image topic is okay",
+    "summary": "",
+    "suite": "db check",
+    "execution_type": "",
+    "importance": 2,
+    "preconditions": ""
+  }
+]
