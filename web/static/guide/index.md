@@ -65,3 +65,8 @@ Note: only valid chars can be used as a `connector`.
 - [test case by xmind v1.xmind](test_case_by_xmind_v1.xmind)
 - [test case by xmind v2.xmind](test_case_by_xmind_v2.xmind)
 
+
+## Reference
+
+- https://github.com/tobyqin/xmind2testlink
+
