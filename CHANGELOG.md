@@ -1,6 +1,11 @@
 Change Log
 ----------
 
+2.0.1
+
+Bug fix - web app should not cache the connector.
+Bug fix - combination title parts incorrectly under some conditions.
+
 2.0.0
 
 Upgrade to v2.0, support convert more flexible xmind files.

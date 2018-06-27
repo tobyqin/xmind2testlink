@@ -11,6 +11,7 @@ set_logger_level(logging.DEBUG)
 xml_dir = dirname(__file__)
 xmind_v1_file = join(xml_dir, 'Test cases by xmind v1.xmind')
 xmind_v2_file = join(xml_dir, 'Test cases by xmind v2.xmind')
+xmind_x_file = join(xml_dir, 'test-x.xmind')
 
 
 def load_expected(xmind):
@@ -45,5 +46,11 @@ def test_parse_xmind_v2():
 
 def test_flat_suite():
     test_suite = parser.xmind_to_suite(xmind_v2_file)
+    out = flat_suite(test_suite)
+    print(dumps(out, indent=2))
+
+
+def test_x_flat_suite():
+    test_suite = parser.xmind_to_suite(xmind_x_file)
     out = flat_suite(test_suite)
     print(dumps(out, indent=2))

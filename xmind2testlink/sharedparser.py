@@ -73,7 +73,7 @@ def is_v2_format(d):
 
                 last_char = d['title'][-1:]
                 if last_char in _config['valid_sep']:
-                    _config['sep'] = last_char
+                    cache['sep'] = last_char
 
                 return True
 
@@ -86,7 +86,8 @@ def get_priority(d):
 
 
 def _filter_empty_value(values):
-    return [v for v in values if v]
+    result = [v for v in values if v]
+    return [v.strip() for v in result]  # remove blank char in leading and trailing
 
 
 def is_testcase_topic(d):
@@ -112,10 +113,11 @@ def build_testcase_title(nodes):
     values = _filter_empty_value(values)
 
     # when sep is not blank, will add space around sep, e.g. '/' will be changed to ' / '
-    if _config['sep'] != ' ':
-        _config['sep'] = ' {} '.format(_config['sep'])
+    sep = cache.get('sep', _config['sep'])
+    if sep != ' ':
+        sep = ' {} '.format(sep)
 
-    return _config['sep'].join(values)
+    return sep.join(values)
 
 
 def build_testcase_precondition(nodes):

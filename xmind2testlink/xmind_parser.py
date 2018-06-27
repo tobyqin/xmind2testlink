@@ -65,6 +65,8 @@ def xmind_to_suite_v2(xmind_file):
                 for _ in parse_testcase_list(child, parent):
                     yield _
 
+            parent.pop()
+
     def parse_suite(suite_dict):
         suite = TestSuite()
         suite.name = suite_dict['title']
