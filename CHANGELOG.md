@@ -1,5 +1,8 @@
 Change Log
 ----------
+2.0.2
+
+Bug fix - root suite should not have a title.
 
 2.0.1
 
