@@ -25,6 +25,7 @@ def xmind_to_suite(xmind_file):
 def xmind_to_suite_v1(xmind_file):
     def parse_suite(suite_dict):
         suite = TestSuite()
+        suite.name = suite_dict['title']
         suite.details = suite_dict['note']
         suite.testcase_list = []
         testcase_topics = suite_dict.get('topics', [])
@@ -39,7 +40,6 @@ def xmind_to_suite_v1(xmind_file):
     root = __.cache['root']
 
     suite = TestSuite()
-    suite.name = root['title']
     suite.sub_suites = []
 
     for _ in root['topics']:
