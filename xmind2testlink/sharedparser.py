@@ -87,7 +87,18 @@ def get_priority(d):
 
 def _filter_empty_value(values):
     result = [v for v in values if v]
+    for r in result:
+        if not isinstance(r, str):
+            get_logger().error('Expected string but not: {}'.format(r))
     return [v.strip() for v in result]  # remove blank char in leading and trailing
+
+
+def _filter_empty_comments(comment_values):
+    """comment value like: [[{content:comment1},{content:comment2}],[...]]"""
+    for comments in comment_values:
+        for comment in comments:
+            if comment.get('content'):
+                yield comment['content']
 
 
 def is_testcase_topic(d):
@@ -121,15 +132,9 @@ def build_testcase_title(nodes):
 
 
 def build_testcase_precondition(nodes):
-    values = [n['comment'] for n in nodes]
-    values = _filter_empty_value(values)
-    comment_list = [comment_list for comment_list in values]
-
-    comments = []
-    for lst in comment_list:
-        for comment in lst:
-            comments.append(comment['content'])
-
+    values = [n['comment'] for n in nodes if n.get('comment', None)]
+    values = list(_filter_empty_comments(values))
+    comments = _filter_empty_value(values)
     return _config['precondition_sep'].join(comments)
 
 
