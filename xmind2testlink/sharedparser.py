@@ -82,7 +82,7 @@ def get_priority(d):
     if isinstance(d['makers'], list):
         for m in d['makers']:
             if m.startswith('priority'):
-                return int(m[-1])
+                return m
 
 
 def _filter_empty_value(values):
