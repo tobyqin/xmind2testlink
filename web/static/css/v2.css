@@ -250,3 +250,29 @@ table.tests-table tr th {
     height: 2em;
     vertical-align: middle;
 }
+
+table td.long-name {
+    color: red
+}
+
+.long-name-info {
+    background-color: #000;
+    border-radius: 4px;
+    color: #fff;
+    max-width: 400px;
+    min-width: 60px;
+    padding: 6px;
+    position: absolute;
+    text-align: left;
+    visibility: hidden;
+    white-space: normal;
+    width: max-content;
+    width: -moz-max-content;
+    word-break: normal;
+    word-wrap: break-word;
+    z-index: 1;
+}
+
+table td.long-name:hover .long-name-info {
+    visibility: visible;
+}

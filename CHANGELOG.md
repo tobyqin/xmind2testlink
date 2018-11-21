@@ -1,5 +1,21 @@
 Change Log
 ----------
+2.0.5
+
+Bug fix - failed to parse priority maker, thanks @nancy301513.
+
+2.0.4
+
+Bug fix - failed to parse comment node.
+
+2.0.3
+
+Bug fix - root suite should not have a title.
+
+2.0.1
+
+Bug fix - web app should not cache the connector.
+Bug fix - combination title parts incorrectly under some conditions.
 
 2.0.0
 

@@ -29,7 +29,11 @@
         <tr>
             <td>{{ loop.index }}</td>
             <td>{{ test.suite }}</td>
-            <td>{{ test.name }}</td>
+            <td {% if test.name|length>100 %}class="long-name" {% endif %}>{{ test.name }}
+                {% if test.name|length>100 %}
+                    <span class="long-name-info">Warn: test name might be too long: {{ test.name|length }}!</span>
+                {% endif %}
+            </td>
             <td>
                 <div class="tag-success tooltip">
                     Priority {{ test.importance }}
