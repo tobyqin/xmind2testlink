@@ -44,7 +44,7 @@ def to_testlink_xml_file(testsuite, path_to_xml):
 
 
 def _convert_importance(importance_value):
-    mapping = {'priority-1': '3', 'priority-2': '2', 'priority-3': '1'}
+    mapping = {1: '3', 2: '2', 3: '1'}
     if importance_value in mapping.keys():
         return mapping[importance_value]
     else:

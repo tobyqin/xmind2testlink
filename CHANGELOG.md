@@ -1,5 +1,9 @@
 Change Log
 ----------
+2.0.5
+
+Bug fix - failed to parse priority maker, thanks @nancy301513.
+
 2.0.4
 
 Bug fix - failed to parse comment node.

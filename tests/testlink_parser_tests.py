@@ -20,4 +20,5 @@ def test_to_testlink_xml():
     assert "only with precondition" in content
     assert "summary of test case" in content
     assert "ignore me" not in content
+    assert "<importance>3</importance>" in content
     os.remove(test_link_xml)
