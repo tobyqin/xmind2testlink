@@ -1,4 +1,5 @@
 import os
+import re
 import sqlite3
 from contextlib import closing
 from os.path import join, exists
@@ -112,9 +113,17 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 
+def check_file_name(name):
+    secured = secure_filename(name)
+    if not secured:
+        secured = re.sub('[^\w\d]+', '_', name)  # only keep letters and digits from file name
+        assert secured, 'Unable to parse file name: {}!'.format(name)
+    return secured + '.xmind'
+
+
 def save_file(file):
     if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
+        filename = check_file_name(file.filename[:-6])
         upload_to = join(app.config['UPLOAD_FOLDER'], filename)
 
         if exists(upload_to):
