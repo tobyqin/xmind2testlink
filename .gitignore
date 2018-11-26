@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 .cache
 out/
+.vscode/
 .idea/
 
 # C extensions

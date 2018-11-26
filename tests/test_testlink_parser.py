@@ -1,4 +1,4 @@
-from tests.xmind_parser_tests import *
+from tests.test_xmind_parser import xmind_v1_file
 from xmind2testlink.testlink_parser import *
 from xmind2testlink.xmind_parser import xmind_to_suite
 
