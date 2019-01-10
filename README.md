@@ -1,7 +1,6 @@
 # xmind2testlink
 
 [![PyPI](https://img.shields.io/pypi/v/xmind2testlink.svg)](https://pypi.org/project/xmind2testlink/)
-[![Code Climate](https://img.shields.io/codeclimate/github/tobyqin/xmind2testlink.svg)](https://codeclimate.com/github/tobyqin/xmind2testlink)
 
 > 中文说明：[xmind2testlink - 快速设计测试案例并导入TestLink](https://tobyqin.github.io/posts/2017-07-27/use-xmind-to-design-testcase/)，如果你的xmind中包含中文或者unicode，请使用Python 3.4+，谢谢。
 
@@ -102,6 +101,10 @@ Note: only valid chars can be used as a `connector`.
 7. Root topic will not be converted, just treat it as target suite node in TestLink.
 8. Free topic and notes will not be converted.
 9. Only the first sheet in xmind will be converted.
+
+### XmindZen Update
+
+Now `xmind2testlink` support xmind zen files, remember one thing, you cannot add comments for a topic in xmind zen, so we cannot create preconditions for ZEN!
 
 **Download the sample xmind files:**
 
