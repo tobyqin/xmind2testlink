@@ -2,9 +2,10 @@ import logging
 from json import dumps, loads
 from os.path import join, dirname
 
+from xmindparser import set_logger_level
+
 import xmind2testlink.xmind_parser as parser
 from xmind2testlink.sharedparser import flat_suite, cache
-from xmind2testlink.xreader import set_logger_level
 
 set_logger_level(logging.DEBUG)
 
@@ -33,12 +34,14 @@ def test_parse_xmind_auto():
 
 
 def test_parse_xmind_v1():
+    cache.clear()
     test_suite = parser.xmind_to_suite_v1(xmind_v1_file)
     expected = load_expected(xmind_v1_file)
     assert flat_suite(test_suite) == expected
 
 
 def test_parse_xmind_v2():
+    cache.clear()
     test_suite = parser.xmind_to_suite_v2(xmind_v2_file)
     expected = load_expected(xmind_v2_file)
     assert flat_suite(test_suite) == expected

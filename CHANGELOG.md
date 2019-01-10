@@ -1,5 +1,9 @@
 Change Log
 ----------
+2.0.6
+
+Support XmindZen file type, since comments feature is removed in xmind zen, so we cannot create `preconditions` from XmindZen.
+
 2.0.5
 
 Bug fix - failed to parse priority maker, thanks @nancy301513.

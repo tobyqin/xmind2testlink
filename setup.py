@@ -23,7 +23,7 @@ classifiers = ["License :: OSI Approved :: MIT License",
                "Topic :: Utilities",
                "Operating System :: Microsoft :: Windows",
                "Operating System :: MacOS :: MacOS X"] + [
-                  ("Programming Language :: Python :: %s" % x) for x in "2.7 3.5".split()]
+                  ("Programming Language :: Python :: %s" % x) for x in "2.7 3.5 3.6 3.7 3.8".split()]
 
 
 def command_line():
@@ -40,13 +40,13 @@ def main():
         keywords="xmind testlink import converter testing testcase",
         long_description=long_description,
         classifiers=classifiers,
-        version="2.0.5",
+        version="2.0.6",
         author="Toby Qin",
         author_email="toby.qin@live.com",
         url="https://github.com/tobyqin/xmind2testlink",
         packages=find_packages(exclude=['tests', 'tests.*']),
         package_data={},
-        install_requires=[],
+        install_requires=['xmindparser'],
         entry_points={"console_scripts": command_line(), },
         zip_safe=False
     )

@@ -1,5 +1,8 @@
+from xmindparser import xmind_to_dict, config
+
 from .datatype import *
 
+config['hideEmptyValue'] = False
 _config = {'sep': ' ',
            'valid_sep': '/>-+',
            'precondition_sep': '\n----\n',
@@ -8,7 +11,7 @@ _config = {'sep': ' ',
 
 def ignore_filter(topics):
     """filter topics starts with !"""
-    result = [t for t in topics if not t['title'].startswith('!')]
+    result = [t for t in topics if t['title'] and not t['title'].startswith('!')]
 
     for topic in result:
         more_topics = topic.get('topics', [])
@@ -24,21 +27,9 @@ def open_and_cache_xmind(xmind_file):
         root_topics = cache['root'].get('topics', [])
         assert len(root_topics) > 0, "Invalid Xmind, should have at least 1 topic!"
         cache['root']['topics'] = ignore_filter(root_topics)
+        cache['name'] = xmind_file
 
     get_logger().debug('Cached xmind: {}'.format(cache))
-
-
-def xmind_to_dict(file_path):
-    """Open and convert xmind to dict type."""
-    from .xreader import open_xmind, get_sheets, sheet_to_dict
-
-    open_xmind(file_path)
-    data = []
-
-    for s in get_sheets():
-        data.append(sheet_to_dict(s))
-
-    return data
 
 
 def get_default_sheet(sheets):
@@ -48,7 +39,7 @@ def get_default_sheet(sheets):
 
 
 def get_logger():
-    from .xreader import logger
+    from xmindparser import logger
     return logger
 
 
