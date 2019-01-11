@@ -26,7 +26,7 @@ class TestCase():
     summary = ""
     preconditions = ""
     importance = 2
-    execution_type = ""
+    execution_type = 1
     steps = None
 
     def to_dict(self):
@@ -48,7 +48,7 @@ class TestStep():
     number = 1
     action = ""
     expected = ""
-    execution_type = ""
+    execution_type = 1
 
     def to_dict(self):
         me = {'number': self.number,

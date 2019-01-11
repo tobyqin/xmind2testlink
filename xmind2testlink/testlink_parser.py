@@ -56,7 +56,7 @@ def should_skip(item):
 
 
 def should_parse(item):
-    return isinstance(item, str) and not item.startswith('!')
+    return (isinstance(item, str) and not item.startswith('!')) or isinstance(item, int)
 
 
 def to_testlink_xml_content(testsuite):
@@ -130,12 +130,15 @@ def build_step_xml(testcase, testcase_element):
 
 
 def set_text(element, content):
-    content = escape(content, entities={'\r\n': '<br />'})  # retain html tags in text
-    content = content.replace("\n", "<br />")  # replace new line for *nix system
-    content = content.replace("<br />", "<br />\n")  # add the line break in source to make it readable
+    if isinstance(content, int):
+        element.text = str(content)
+    elif content:
+        content = escape(content, entities={'\r\n': '<br />'})  # retain html tags in text
+        content = content.replace("\n", "<br />")  # replace new line for *nix system
+        content = content.replace("<br />", "<br />\n")  # add the line break in source to make it readable
 
-    # trick to add CDATA for element tree lib
-    element.append(Comment(' --><![CDATA[' + content.replace(']]>', ']]]]><![CDATA[>') + ']]><!-- '))
+        # trick to add CDATA for element tree lib
+        element.append(Comment(' --><![CDATA[' + content.replace(']]>', ']]]]><![CDATA[>') + ']]><!-- '))
 
 
 def prettify_xml(xml_string):
