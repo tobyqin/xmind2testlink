@@ -1,5 +1,9 @@
 Change Log
 ----------
+2.0.7
+
+Bug fix - convert execution type to 1 by default.
+
 2.0.6
 
 Support XmindZen file type, since comments feature is removed in xmind zen, so we cannot create `preconditions` from XmindZen.
