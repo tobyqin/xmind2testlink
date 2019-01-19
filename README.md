@@ -63,7 +63,10 @@ The output:
 
 ### v2 rules
 
-Your input xmind looks like this:
+Latest update: `xmind2testlink` will auto detect v1 and v2 rules by checking if descendants of testcase node (3rd level nodes)
+still have priority maker. If yes, this file will be processed by v2 rule, else by v1 rule.
+
+V2 xmind looks like this:
 
 ![xmind2testlink_v2](web/static/guide/xmind2testlink_v2.png)
 
@@ -72,9 +75,6 @@ The output:
 ![xmind2testlink_v2_out](web/static/guide/xmind2testlink_v2_out.png)
 
 **Rules:**
-
-Latest update: `xmind2testlink` will auto detect v1 and v2 rules by checking if descendants of testcase node (3rd level nodes)
-still have priority maker. If yes, this file will be processed by v2 rule, else by v1 rule.
 
 1. Mark root topic with a **star marker**, this means **v2 xmind** file. (no matter what color of star maker, optional)
 2. First sub topic => it is still converted to suite
