@@ -89,7 +89,7 @@ def get_latest_record():
         return found[0]
 
 
-def get_records(limit=8):
+def get_records(limit=12):
     short_name_length = 120 if V2 else 30
     c = g.db.cursor()
     sql = "select * from records where is_deleted<>1 order by id desc limit {}".format(int(limit))

@@ -4,7 +4,7 @@ to debug real xmind files.
 
 import xmind2testlink.xmind_parser as parser
 
-xmind = r"tests/Test cases by xmind v2.xmind"
+xmind = r"/Users/tobyqin/Desktop/bad.xmind"
 
 
 def test_parse_xmind_file():

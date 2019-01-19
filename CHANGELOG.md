@@ -1,5 +1,10 @@
 Change Log
 ----------
+2.0.8
+
+Enhancement - parse callout as preconditions for XmindZen.
+Auto determine rule v1 or v2 by checking descendants of the 3rd level nodes(which is v1 testcase level) have priority marker or not.  
+
 2.0.7
 
 Bug fix - convert execution type to 1 by default.

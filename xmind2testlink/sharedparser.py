@@ -57,16 +57,40 @@ def flat_suite(suite):
 
 
 def is_v2_format(d):
-    """v2 xmind root dict will have a star maker, and sep is this last char of title."""
+    """v2 xmind root dict will have a star maker, or sub node of testcase marked with priority."""
+    if _is_v2_by_marker(d) or _is_v2_by_guess(d):
+        _get_v2_sep(d)
+        return True
+
+
+def _get_v2_sep(d):
+    """v2 sep is this last char of title."""
+    last_char = d['title'][-1:]
+    if last_char in _config['valid_sep']:
+        cache['sep'] = last_char
+
+
+def _is_v2_by_marker(d, maker_prefix='star'):
+    """check if a node have a star maker"""
     if isinstance(d['makers'], list):
         for m in d['makers']:
-            if m.startswith('star'):
-
-                last_char = d['title'][-1:]
-                if last_char in _config['valid_sep']:
-                    cache['sep'] = last_char
-
+            if m.startswith(maker_prefix):
                 return True
+
+
+def _is_v2_by_guess(d):
+    """if any sub topic from testcase node mark with priority, this can be guessed as v2 xmind. """
+    for suite_node in d['topics']:
+        for testcase_node in suite_node['topics']:
+            sub_topics = testcase_node['topics']
+            while sub_topics:
+                for _ in sub_topics:
+                    temp_topics = []
+                    if _is_v2_by_marker(_, maker_prefix='priority'):
+                        return True
+                    else:
+                        temp_topics.extend(_['topics'])
+                    sub_topics = temp_topics
 
 
 def get_priority(d):
@@ -123,8 +147,14 @@ def build_testcase_title(nodes):
 
 
 def build_testcase_precondition(nodes):
-    values = [n['comment'] for n in nodes if n.get('comment', None)]
+    values = (n['comment'] for n in nodes if n.get('comment', None))
     values = list(_filter_empty_comments(values))
+
+    if not values:  # try to get from callout
+        for n in nodes:
+            for _ in n.get('callout', None) or []:
+                values.append(_)
+
     comments = _filter_empty_value(values)
     return _config['precondition_sep'].join(comments)
 
