@@ -154,7 +154,17 @@ Start a browser, then you will be able to convert xmind to TestLink via http://1
 
 If you wan to deploy this application to a web server, please checkout [Flask Deployment](http://flask.pocoo.org/docs/0.12/deploying/#deployment).
 
-### 2. Batch on Windows
+### 3. Run in Docker
+
+If you have docker installed, you just need 1 line code to run xmind2testlink.
+
+```
+docker run -d --name xmind2testlink -p 3000:5001 tobyqin/xmind2testlink
+```
+
+Now go to http://localhost:3000 you will able to use xmind2testlink in browser.
+
+### 3. Batch on Windows
 
 It is okay to batch convert all xmind files in a folder, copy the [`xmind2testlink_all.bat`](batch/xmind2testlink_all.bat) to your folder, then you will be able to convert all files by double clicking on it.
 
