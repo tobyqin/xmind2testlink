@@ -100,6 +100,19 @@ def get_priority(d):
                 return int(m[-1])
 
 
+def get_execution_type(d):
+    """
+    support testcase option automation/manual by using "flag-green"
+    :param d: testcase topic
+    :return: 2 is automation, 1 is manual
+    """
+    #winter add to get automation flag "flag_green"
+    if isinstance(d['makers'], list):
+        if 'flag-green' in d['makers']:
+                return 2
+        return 1
+
+
 def _filter_empty_value(values):
     result = [v for v in values if v]
     for r in result:
@@ -195,6 +208,9 @@ def parse_testcase(testcase_dict, parent=None):
     testcase.summary = build_testcase_summary(nodes)
     testcase.preconditions = build_testcase_precondition(nodes)
     testcase.importance = get_priority(testcase_dict)
+
+    testcase.execution_type = get_execution_type(testcase_dict)
+
 
     steps_node = testcase_dict.get('topics', None)
 
