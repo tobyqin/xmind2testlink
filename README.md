@@ -98,12 +98,13 @@ Note: only valid chars can be used as a `connector`.
 2. `Notes` for a test case => `summary` in TestLink.
 3. `Comments` for a test case => `preconditions` in TestLink.
 4. `Priority` maker for a test case => `importance` in TestLink.
-5. Sub topics for a test case will be treated as test steps.
+5. `flag-green` maker for a test case => `execution type` in TestLink.
+6. Sub topics for a test case will be treated as test steps.
    - It is okay to design test step **with action** but **without expected results**.
-6. Use `!` to ignore any test suite / test case / test step that you don't want to convert.
-7. Root topic will not be converted, just treat it as target suite node in TestLink.
-8. Free topic and notes will not be converted.
-9. Only the first sheet in xmind will be converted.
+7. Use `!` to ignore any test suite / test case / test step that you don't want to convert.
+8. Root topic will not be converted, just treat it as target suite node in TestLink.
+9. Free topic and notes will not be converted.
+10. Only the first sheet in xmind will be converted.
 
 ### XmindZen Update
 
