@@ -2,9 +2,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/xmind2testlink.svg)](https://pypi.org/project/xmind2testlink/)
 
-With xmind2testlink, you will be able to convert [xmind](https://www.xmind.net/) tests to [testlink](http://www.testlink.org/) tests xml files. You should have python installed before running it.
-
-See also [xmindparser](https://github.com/tobyqin/xmindparser)
+With xmind2testlink, you will be able to convert [xmind](https://www.xmind.net/) tests to [testlink](http://www.testlink.org/) tests xml files. You should have python installed before running it. See also [xmindparser](https://github.com/tobyqin/xmindparser).
 
 **Requirement:** python 2.7 or 3.4 +
 
