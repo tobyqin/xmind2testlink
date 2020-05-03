@@ -133,7 +133,7 @@ The field mapping looks like below figure.
 
 ### 1. Use from browser
 
-A simple webpage to host this feature also has been built in  `web` folder. To start the website, here is the command:
+A simple web page to host this feature also has been built in  `web` folder. To start the website, here is the command:
 
 ```shell
 # clone this git repo ahead
@@ -155,11 +155,20 @@ If you wan to deploy this application to a web server, please checkout [Flask De
 
 If you have docker installed, you just need 1 line code to run xmind2testlink.
 
-```
-docker run -d --name xmind2testlink -p 3000:5001 tobyqin/xmind2testlink
+```bash
+docker run -d --name xmind2testlink --restart always -p 3000:5001 tobyqin/xmind2testlink
 ```
 
 Now go to http://localhost:3000 you will able to use xmind2testlink in browser.
+
+Build and run your docker engine:
+
+```bash
+cd web
+docker build -t xmind2testlink:latest .
+docker run -d --name xmind2testlink --restart always -p 3000:5001 tobyqin/xmind2testlink
+
+```
 
 ### 3. Batch on Windows
 
