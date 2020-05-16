@@ -106,11 +106,11 @@ def get_execution_type(d):
     :param d: testcase topic
     :return: 2 is automation, 1 is manual
     """
-    #winter add to get automation flag "flag_green"
+    # try to get automation flag "flag_green"
     if isinstance(d['makers'], list):
         if 'flag-green' in d['makers']:
                 return 2
-        return 1
+    return 1
 
 
 def _filter_empty_value(values):

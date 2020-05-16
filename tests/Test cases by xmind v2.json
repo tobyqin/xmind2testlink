@@ -1,169 +1,169 @@
 [
   {
-    "importance": 2,
     "name": "verify login page url",
     "summary": "will changed to summary part 1",
-    "suite": "ui check",
     "preconditions": "comments part 1 => precondition",
+    "importance": 2,
+    "execution_type": 1,
     "steps": [
       {
-        "execution_type": "",
-        "expected": "",
+        "number": 1,
         "action": "equal to \"login.example.com\"",
-        "number": 1
+        "expected": "",
+        "execution_type": 1
       }
     ],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 1,
     "name": "verify login page layout",
     "summary": "will changed to summary part 1",
-    "suite": "ui check",
     "preconditions": "comments part 1 => precondition",
+    "importance": 1,
+    "execution_type": 1,
     "steps": [
       {
-        "execution_type": "",
-        "expected": "",
+        "number": 1,
         "action": "match design",
-        "number": 1
+        "expected": "",
+        "execution_type": 1
       }
     ],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 1,
     "name": "verify login page components username input",
     "summary": "will changed to summary part 1\n----\nwill changed to summary part 2",
-    "suite": "ui check",
     "preconditions": "comments part 1 => precondition",
+    "importance": 1,
+    "execution_type": 1,
     "steps": [
       {
-        "execution_type": "",
-        "expected": "expected",
+        "number": 1,
         "action": "step ..",
-        "number": 1
+        "expected": "expected",
+        "execution_type": 1
       }
     ],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 1,
     "name": "verify login page components password input",
     "summary": "will changed to summary part 1\n----\nwill changed to summary part 2",
-    "suite": "ui check",
     "preconditions": "comments part 1 => precondition",
+    "importance": 1,
+    "execution_type": 1,
     "steps": [
       {
-        "execution_type": "",
-        "expected": "",
+        "number": 1,
         "action": "step ...",
-        "number": 1
+        "expected": "",
+        "execution_type": 1
       }
     ],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 1,
     "name": "verify login page components login button",
     "summary": "will changed to summary part 1\n----\nwill changed to summary part 2\n----\nnotes part 3 => summary",
-    "suite": "ui check",
     "preconditions": "comments part 1 => precondition",
+    "importance": 1,
+    "execution_type": 1,
     "steps": [],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 1,
     "name": "verify login page translation - en",
     "summary": "will changed to summary part 1",
-    "suite": "ui check",
     "preconditions": "comments part 1 => precondition\n----\ncomment part 2 => precondition",
+    "importance": 1,
+    "execution_type": 1,
     "steps": [],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 2,
     "name": "verify login page translation - cn",
     "summary": "will changed to summary part 1",
-    "suite": "ui check",
     "preconditions": "comments part 1 => precondition\n----\ncomment part 2 => precondition\n----\ncomments part 3=> precondition",
+    "importance": 2,
+    "execution_type": 1,
     "steps": [],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 1,
     "name": "verify login page action = valid name +  valid password",
     "summary": "will changed to summary part 1",
-    "suite": "ui check",
     "preconditions": "comments part 1 => precondition",
+    "importance": 1,
+    "execution_type": 1,
     "steps": [
       {
-        "execution_type": "",
-        "expected": "",
+        "number": 1,
         "action": "step 1",
-        "number": 1
+        "expected": "",
+        "execution_type": 1
       },
       {
-        "execution_type": "",
-        "expected": "expected",
+        "number": 2,
         "action": "step 2",
-        "number": 2
+        "expected": "expected",
+        "execution_type": 1
       }
     ],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 1,
     "name": "verify login page action = valid name + bad password",
     "summary": "will changed to summary part 1",
-    "suite": "ui check",
     "preconditions": "comments part 1 => precondition",
+    "importance": 1,
+    "execution_type": 1,
     "steps": [],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 2,
     "name": "verify login page action = bad name + bad password",
     "summary": "will changed to summary part 1",
-    "suite": "ui check",
     "preconditions": "comments part 1 => precondition",
+    "importance": 2,
+    "execution_type": 1,
     "steps": [],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 2,
     "name": "verify home page",
     "summary": "last trail topic was not marked with priority, it will be treated as test case by default, and its priority will be set to 2",
-    "suite": "ui check",
     "preconditions": "",
+    "importance": 2,
+    "execution_type": 1,
     "steps": [],
-    "execution_type": ""
+    "suite": "ui check"
   },
   {
-    "importance": 2,
     "name": "verify users table schema",
     "summary": "",
-    "suite": "db check",
     "preconditions": "",
+    "importance": 2,
+    "execution_type": 1,
     "steps": [],
-    "execution_type": ""
+    "suite": "db check"
   },
   {
-    "importance": 2,
     "name": "verify users table functions",
     "summary": "If the trail topic was not marked with priority, it will be treated as a test case by default, and its priority will be set to 2",
-    "suite": "db check",
     "preconditions": "",
+    "importance": 2,
+    "execution_type": 1,
     "steps": [],
-    "execution_type": ""
+    "suite": "db check"
   },
   {
-    "importance": 2,
     "name": "[Image] topics after image topic is okay",
     "summary": "",
-    "suite": "db check",
     "preconditions": "",
+    "importance": 2,
+    "execution_type": 1,
     "steps": [],
-    "execution_type": ""
+    "suite": "db check"
   }
 ]
