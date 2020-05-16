@@ -10,11 +10,11 @@ jobs:
   release:
     name: Create Release
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create Release
+        continue-on-error: true
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -28,7 +28,6 @@ jobs:
           prerelease: false
   deploy:
     name: Publish
-    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -41,6 +40,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install setuptools wheel twine
       - name: Build and publish
+        continue-on-error: true
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASS }}
