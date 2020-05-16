@@ -7,7 +7,7 @@ With xmind2testlink, you will be able to convert [xmind](https://www.xmind.net/)
 
 **Requirement:** python 2.7 or 3.4 +
 
-> 中文说明：[xmind2testlink - 快速设计测试案例并导入TestLink](https://tobyqin.github.io/posts/2017-07-27/use-xmind-to-design-testcase/)，如果你的xmind中包含中文或者unicode，请使用Python 3.4+，谢谢。
+> 中文说明：[xmind2testlink - 快速设计测试案例并导入TestLink](https://tobyqin.github.io/posts/2017-07-26/use-xmind-to-design-testcase/)，如果你的xmind中包含中文或者unicode，请使用Python 3.4+，谢谢。
 
 ## Installation and quick start
 
