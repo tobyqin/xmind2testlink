@@ -1,6 +1,6 @@
 # xmind2testlink
+
 [![Test Package](https://github.com/tobyqin/xmind2testlink/workflows/Test%20Package/badge.svg)](https://github.com/tobyqin/xmind2testlink/actions)
-[![Publish Pypi](https://github.com/tobyqin/xmind2testlink/workflows/Publish%20Pypi/badge.svg)](https://github.com/tobyqin/xmind2testlink/actions)
 [![PyPI](https://img.shields.io/pypi/v/xmind2testlink.svg)](https://pypi.org/project/xmind2testlink/)
 
 With xmind2testlink, you will be able to convert [xmind](https://www.xmind.net/) tests to [testlink](http://www.testlink.org/) tests xml files. You should have python installed before running it. See also [xmindparser](https://github.com/tobyqin/xmindparser).
