@@ -1,6 +1,6 @@
 from xmindparser import xmind_to_dict, config
 
-from .datatype import *
+from .datatype import TestCase, TestStep, cache
 
 config['hideEmptyValue'] = False
 _config = {'sep': ' ',
@@ -109,7 +109,7 @@ def get_execution_type(d):
     # try to get automation flag "flag_green"
     if isinstance(d['makers'], list):
         if 'flag-green' in d['makers']:
-                return 2
+            return 2
     return 1
 
 
@@ -210,8 +210,6 @@ def parse_testcase(testcase_dict, parent=None):
     testcase.importance = get_priority(testcase_dict)
 
     testcase.execution_type = get_execution_type(testcase_dict)
-
-
     steps_node = testcase_dict.get('topics', None)
 
     if steps_node:

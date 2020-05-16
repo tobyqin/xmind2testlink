@@ -5,12 +5,13 @@ import os
 from codecs import open
 from io import BytesIO
 from os.path import exists
-from xml.dom import minidom
 from xml.etree import ElementTree
 from xml.etree.ElementTree import Element, SubElement, Comment
 from xml.sax.saxutils import escape
 
-from .datatype import *
+from xml.dom import minidom
+
+from .datatype import TestStep, TestSuite, TestCase, cache
 
 
 class Tags():
