@@ -1,4 +1,4 @@
-name: Python package
+name: Test Pacakge
 
 on: [push]
 
@@ -30,19 +30,19 @@ jobs:
         run: |
           pytest
 
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - run: pip install setuptools wheel twine -U
-      - run: python setup.py sdist bdist_wheel
-      - run: ls -la  && printenv | sort
-      - name: Publish Pypi
-        uses: pypa/gh-action-pypi-publish@v1.1.0
-        with:
-          user:  ${{ secrets.PYPI_USER }}
-          password: ${{ secrets.PYPI_PASS }}
+#  publish:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-python@v2
+#        with:
+#          python-version: '3.x'
+#      - run: pip install setuptools wheel twine -U
+#      - run: python setup.py sdist bdist_wheel
+#      - run: ls -la  && printenv | sort
+#      - name: Publish Pypi
+#        uses: pypa/gh-action-pypi-publish@v1.1.0
+#        with:
+#          user:  ${{ secrets.PYPI_USER }}
+#          password: ${{ secrets.PYPI_PASS }}
 
