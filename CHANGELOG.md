@@ -1,6 +1,6 @@
 Change Log
 ----------
-2.0.9
+2.1.0
 
 Fix unit test and flake8 issues.
 

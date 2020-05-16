@@ -167,7 +167,6 @@ Build and run your docker engine:
 cd web
 docker build -t xmind2testlink:latest .
 docker run -d --name xmind2testlink --restart always -p 3000:5001 tobyqin/xmind2testlink
-
 ```
 
 ### 3. Batch on Windows

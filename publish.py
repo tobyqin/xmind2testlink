@@ -5,6 +5,10 @@ Use this script to upload a pypi package, require below package:
     pip install wheel -U
     pip install twine -U
 
+
+This is the script to release manually, now the package can be released via Github Actions:
+- https://github.com/tobyqin/xmind2testlink/actions
+
 """
 import os
 
