@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 3
@@ -30,10 +29,14 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-    - name: Deploy Pypi
-      uses: remorses/pypi@v3
-      with:
-        # username
-        username: todo
-        # password
-        password: todo
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Pypi
+        uses: remorses/pypi@v3
+        with:
+          # username
+          username: todo
+          # password
+          password: todo
