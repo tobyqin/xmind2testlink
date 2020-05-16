@@ -39,8 +39,7 @@ jobs:
           python-version: '3.x'
       - run: pip install setuptools wheel twine -U
       - run: python setup.py sdist bdist_wheel
-      - name: Show files
-        run: ls -la  && printenv | sort
+      - run: ls -la  && printenv | sort
       - name: Publish Pypi
         uses: pypa/gh-action-pypi-publish@v1.1.0
         with:
