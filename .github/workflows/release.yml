@@ -22,7 +22,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           body: |
-            Changes in this Release
+            See more: https://github.com/tobyqin/xmind2testlink/blob/master/CHANGELOG.md
           draft: false
           prerelease: false
   deploy:
@@ -40,7 +40,7 @@ jobs:
           pip install setuptools wheel twine
       - name: Build and publish
         env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USER }}
+          TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASS }}
         run: |
           python setup.py sdist bdist_wheel
